@@ -1,0 +1,8 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\babel@toc {ngerman}{}
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Methods}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Neural Networks}{5}{section.2.1}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
