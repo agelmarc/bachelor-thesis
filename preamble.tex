@@ -18,6 +18,7 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 
+\usepackage{tabularx}
 \usepackage{pgf}
 \usepackage{adjustbox}
 \usepackage{verbatim}
@@ -26,14 +27,11 @@
 \usepackage{wrapfig}
 \usepackage{float}
 \usepackage{braket}
-
-% Einfügen von Fülltextparagraphen
 \usepackage{lipsum}
 
-% SI Einheiten
 \usepackage[separate-uncertainty=true]{siunitx}
 \sisetup{locale=US,per-mode=fraction}
-% Subfigures
+
 \usepackage{subcaption}
 \captionsetup{
   format=plain,
@@ -41,20 +39,17 @@
   textfont={it},
   font={normalsize}
 }
+
 \usepackage[
   natbib=true,
   style=numeric,
   sorting=none,
 ]{biblatex}
-\bibliography{main}
 
 \usepackage{chngcntr}
 \counterwithin{figure}{section}
 
-% Clever Refs
-\usepackage{cleveref}
-
-\usepackage{tabularx}
+% \setlength{\intextsep}{0pt}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
