@@ -1,2 +1,119 @@
-\section{Neural Networks}
-a
+\section{Physical Preliminaries}
+To describe the bound state of an nuclear core, we use the hamilton formulism of quantum mechanics. We model the system by stating a hamilton operator $\hat{H}$. The quantum state of the system can then be found by solving the eigenvalue problem
+\begin{equation}
+  \label{eqn:sgl}
+  \hat{H}\ket{\psi} = E\ket\psi.
+\end{equation}
+The complete information about the system, including the time evolution and expectation values of observables, lie in the state $\ket\psi$. When looking at \eqref{eqn:sgl}, three questions arise. First, how can we mathematically model these states? Second, how do we choose $\hat{H}$ to model the interactions between the nucleons? Third, how do we go about solving this eigenvalue problem? In this section, we provide answers to these questions.
+\subsection{Hilbert space}
+Since nuclei consist of many smaller particles called \textit{nucleons} (\textit{neutrons} and \textit{protons}), single-particle states are not sufficient to describe composite systems such as nuclei. For that, many-body states must be used. Many body states can be constructed from single particle states.
+
+The state of a single nucleon is given by
+\begin{equation}
+  \ket\psi = \ket{\mathrm{position}}
+\end{equation}
+\subsection{Hamiltonian}
+\subsection{Ab initio NCSM}
+
+\section{Machine Learning}
+
+Since the results of No-Core Shell Model calculations can show a variety of different convergence behaviors depending on the nucleus or the chosen models of the strong interaction force, it is of large interest to develop extrapolation methods which capture the complexity of the resulting sequences and predict accurate values for various input sequences, independent of their convergence behavior.
+
+In this section, we provide the theoretical foundation of artificial neural networks, which have already been used in various different physical
+% TODO: Beispiele für Anwendungen (https://arxiv.org/pdf/1810.04009.pdf S.2)
+applications.
+
+\subsection{Introduction to Artificial Neural Networks}
+
+An artificial neural network is a pattern recognition algorithm in the field of machine learning. The term \textit{neural network} refers to the original idea to mimic the learning mechanism in biological organisms.
+
+In the human brain, countless cells called \textit{neurons} are connected to each other in a highly complex system. The strengths of these synaptic connections often change in response to external stimuli. This change is how learning takes place in living organisms \cite{Aggarwal2018}.
+
+This learning mechanism is translated to a machine learning algorithm by using basic data processing units that model the behavior of neurons. Because of that, the basic units of an artificial neural network are called neuons as well. These neurons are linked via directed connections. If we wanted to model the structure of the brain more precicely, there would be no restrictions on which neuron could link to which neuron, since this the case in the brain. The machine learning counterpart to this is called a \textit{recurrent network}. The mathematical model of recurrent networks can get arbitrarily complex, such that we only look at neural networks where the neurons are grouped in different layers and only connections from one layer to the next are permitted. This is called a \textit{feedforward network}. Throughout this thesis, we only look at feedforward networks.
+
+In a feedforward network, we hope that the layers correspond to rising levels of abstraction, such that the neurons in earlier layers may capture every detail of the input data and neurons in later layers may capture subpatterns in the input data.
+\begin{figure}
+  \includegraphics[width=0.7\textwidth]{media/network.png}
+  \caption{a}
+\end{figure}
+
+
+\subsection{Structure and Mathematical Framework}
+To understand how an artificial neural network processes large amounts of data,
+we must first discuss the structure, or the \textit{topology} of such networks.
+
+
+\begin{wrapfigure}{r}{5cm}
+  \includegraphics[width=5cm]{media/neuron.png}
+  \caption{
+    An example neuron with three input connections $x_1$, $x_2$ and
+    $x_3$ and an output connection. \cite{nielsen}
+  }
+\end{wrapfigure}
+In an ANN, the basic data processing unit is a neuron. Its only job is to take
+input signals from directed connections to other neurons and process these inputs to generate an output signal, which can itself be connected to the input of other neurons. The activation $a$ of a neuron is computed by adding the input signals $x_j$ multiplied with connection weights $w_j$, representing the strength of the connection. This weighted sum is then added to a neuron bias $b$ and normalized using an activation function $\sigma$, yielding
+
+\begin{equation}
+  a = \sigma\left(\sum_j w_j x_j + b\right).
+\end{equation}
+In most use cases, the activation function $\sigma$ is chosen such that the
+neuron outputs are restricted to subsets of $\R$. To force neuron activations
+to lie in $(0,1)$, one can use the sigmoid function
+$\sigma(z) = [1+\exp(-z)]^{-1}$.
+
+In feedforward neural networks, neurons are organized in layers 1 to $N$.
+In each layer $n$, there are $L^{(n)}$ neurons and the neurons have an outbound connection to every neuron in layer $n+1$.
+The $L^{(1)}$ neurons of layer 1 have no input connections and can be used to directly feed $L^{(1)}$-dimensional input data to the network.
+The first layer of a neural network is thus called the \textit{input layer}.
+When we feed $L^{(1)}$-dimensional data into the network, it propagates forward, layer-by-layer until the last layer, where the activations can be viewed as the processed output of the network. The last layer is thus called the \textit{output layer}.
+The layers between the input and the output layer are called \textit{hidden layers}, since the activation of those neurons are neither direct inputs nor outputs of the data processing.
+
+Now, let $\vec{a}^{(n)} = (a_1, a_2, \dotsb, a_{L^{(n)}}) \in \R^{L^{(n)}}$ be the activations and $\vec{b}^{(n)} = (b_1, b_2, \dotsb, b_{L^{(n)}}) \in \R^{L^{(n)}}$ be the biases of the neurons in Layer $n$. For $1< n < N$, the activation of the neurons in layer $n+1$ can be functionally described by
+\begin{align}
+  A^{(n)}: \R^{L^{(n)}} & \longmapsto \R^{L^{(n+1)}}                                                        \\
+  \vec{a}^{(n)}         & \longmapsto \vec{a}^{(n+1)} = \sigma\left(W^{(n)}\vec{a}^{(n)} +b^{(n+1)}\right).
+\end{align}
+Here, $W^{(n)} = (w^{(n)}_{ij})$ is the $(L^{(n+1)} \times L^{(n)})$-dimensional Matrix of the weights $w^{(n)}_{ij}$ from neuron $j$ in layer $n$ to neuron $i$ in layer $n+1$. Furthermore, the activation function $\sigma$ is applied elementwise. In that sense, one can view a neural network as a function
+\begin{align}
+  \label{eqn:ann_function}
+  f: \R^{L^{(1)}} & \longmapsto \R^{L^{(N)}}                                                           \\
+  x               & \longmapsto \left(A^{(N-1)} \circ \dotsb \circ A^{(2)}\right)(W^{(1)}x + b^{(2)}).
+\end{align}
+Before one constructs a feedforward artificial neural network, one has to think about the structure (i.e the count of layers and the count of neurons in each layer) and the used activation function. Those values have to be chosen such that the network can fulfill the data requirements and output the right data.
+
+For example, if one uses an ANN to classify greyscale images of pixel-size $24\times 24$ into two classes $A$ and $B$ (this is called a \textit{binary classification problem}), one could choose $L^{(1)} = 24 \cdot 24 = 576$ and $L^{(N)} = 2$, such that each greyscale value can be fed into one input neuron and each output neuron corresponds to one of the two classes $A$ and $B$. If one restricts the output neurons to the range $(0, 1)$, one could extract the prediction of the network by choosing the neuron with the highest activation.
+% Absatz über underfitting / overfitting
+
+The function \eqref{eqn:ann_function} is dependent on the weights and biases of the connections and neurons. They can be viewed as internal parameters of $f$. When the network is initialized, they are often set to random values and the network will output random data. The challenge of machine learning is to apply algorithms on the outputs of the network to carefully adjust the weights and biases which results in the optimization of the network model.
+
+\subsection{Optimization Process}
+There are many ways to tackle the optimization process of neural networks. Training methods all rely on evaluating the outputs of some given inputs and comparing them to the values that \textit{should} be output by the network.
+
+To quantify the performance of a given network $f$, we define a \textit{loss function} which depends on given inputs $x_1, x_2, \dots, x_n \in \R^{L^{(1)}}$, their desired outputs $a_1, a_2, \dots, a_n \in \R^{L^{(N)}}$ and, most importantly, the weights $w$ and the biases $b$ of the network, by
+\begin{equation}
+  \label{eqn:mseloss}
+  C(w, b) = \frac{1}{n}\sum_{i=1}^{n}\norm{f(x_i)-a_i}^2
+\end{equation}
+Note that the loss function is always positive and only zero, when the network predicts the correct output for every input. There are many ways to choose a loss function that has these properties. The function \eqref{eqn:mseloss} is called the \textit{mean squared error} (MSE) and is used throughout this thesis as the loss function.
+
+Using this terminology, we can translate the optimization process of a network to a well-posed problem of finding the minimum of a function. Usually, the number of dimensions is too high to compute the minimum of the loss function analytically. One has to rely on numerical methods to find a local minimum of \eqref{eqn:mseloss}. The numerical algorithm that is used in machine learning is called \textit{gradient descent}.
+
+The gradient descend method is an iterative method that can be used to find a local minimum of an arbitrary differentiable function $f: \R^n \mapsto \R, x \mapsto f(x)$. Starting from a point $x^{(0)} \in \R^n$, we iteratively adjust the value by a finite amount $\Delta x$. The function will change by
+\begin{equation}
+  \label{eqn:approx}
+  \Delta f \approx \frac{\partial f}{\partial x_1} \Delta x_1 + \dots + \frac{\partial f}{\partial x_2} \Delta x_2 = (\nabla f)(x) \cdot \Delta x
+\end{equation}
+
+If we choose $\Delta x = -\eta (\nabla f)(x)$, with a small positive parameter $\eta$ called the \textit{learning rate}, we can force the right hand side of \eqref{eqn:approx} to be negative. In that way, if we adjust $x$ by $\Delta x$, we can ensure that the new function value at $x^{(1)} = x^{(0)}+ \Delta x$ will be smaller, if the approximation in \eqref{eqn:approx} is good enough. For that, it is important to carefully choose the value of $\eta$ small enough, but not too small. If the step size is too small, the new value will not have changed much and the total amount of steps must be increased to obtain a reasonable optimization.
+
+Applied to the loss function \eqref{eqn:mseloss}, we get the iteration rule
+\begin{align}
+  w_i & \mapsto w_i' = w_i - \eta \frac{\partial C}{\partial w_i} \\
+  b_i & \mapsto b_i' = b_i - \eta \frac{\partial C}{\partial b_i}
+\end{align}
+
+Since the cost function depends on every input $x_i$, it is computationally infeasible to calculate the gradient of the loss function directly. Therefore, we employ the \textit{stochastic gradient descent} algorithm. The idea is to approximate the gradient of the loss function by dividing the sample set into batches and calculating the gradient only using a single batch of samples. The resulting gradient will be used to adjust the weights and biases. This allows for more steps to be taken with given inputs, but the steps themselves are not as accurate as with gradient descent.
+
+
+To compute the gradient of the loss function, a classical backpropagation algorithm is used.
+% TODO: Maybe etwas dazu schreiben
