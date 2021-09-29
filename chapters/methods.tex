@@ -1,5 +1,5 @@
 \section{Physical Preliminaries}
-To describe the bound state of an nuclear core, we use the hamilton formulism of quantum mechanics. We model the system by stating a hamilton operator $\hat{H}$. The quantum state of the system can then be found by solving the eigenvalue problem
+To describe the bound state of an nucleus, we use the hamilton formulism of quantum mechanics. We model the system by stating a hamilton operator $\hat{H}$. The quantum state of the system can then be found by solving the eigenvalue problem
 \begin{equation}
   \label{eqn:sgl}
   \hat{H}\ket{\psi} = E\ket\psi.
@@ -8,20 +8,134 @@ The complete information about the system, including the time evolution and expe
 \subsection{Hilbert space}
 Since nuclei consist of many smaller particles called \textit{nucleons} (\textit{neutrons} and \textit{protons}), single-particle states are not sufficient to describe composite systems such as nuclei. For that, many-body states must be used. Many body states can be constructed from single particle states.
 
-The state of a single nucleon is given by
+Since the degrees of freedom for a single nucleon is given by the position, the spin and the isospin of the nucleon, the Hilbert space of a single nucleon is given by the tensor product
 \begin{equation}
-  \ket\psi = \ket{\mathrm{position}}
+  \H = \H_\mathrm{pos} \otimes \H_\mathrm{spin} \otimes \H_\mathrm{isospin}.
+\end{equation}
+States $\ket\psi$ in this Hilbert space are given by the tensor product of the seperate subspaces
+\begin{equation}
+  \ket\psi = \ket{\psi_\mathrm{pos}}\otimes \ket{\psi_\mathrm{spin}}\otimes \ket{\psi_\mathrm{isospin}}
+\end{equation}
+
+To better describe states in the single nucleon state $\H$, we need a basis that can be constructed from the bases of the subspaces.
+
+Since nucleons have spin $1/2$, we can use the eigenstates of $\hat{S}^2$ and $\hat{S}_z$ with projections $m_s = \pm1/2$ as a basis of $\H_\mathrm{spin}$. We label those basis states as spin up and spin down
+\begin{align}
+  \ket{s=1/2, m_s =  1/2} \equiv \ket{\uparrow} \\
+  \ket{s=1/2, m_s = - 1/2} \equiv \ket{\downarrow}
+\end{align}
+Analogously, the isospin basis states are given by the eigenstates of $\hat{T}^2$ and $\hat{T}_3$ with $t=1/2$ and $m_t=1/2$. The projections $m_t$ are different for the neutron and the proton. Hence we can identify the states with them via
+\begin{align}
+  \ket{t=1/2, m_t =  1/2} \equiv \ket{p} \\
+  \ket{t=1/2, m_t = - 1/2} \equiv \ket{n}.
+\end{align}
+
+For the position state, we use a spherical harmonic oscillator basis with main quantum number $n$, angular momentum $l$ and the projection of the angular momentum along the $z$-axis $m_l$.
+
+If we want to construct a many body state $\ket{\psi}$, consisting of $N$ nucleons with state $\psi_i \in \H$ , we could take the tensor product of them, which is an element of the Hilbert space
+\begin{equation}
+  \H_N = \bigotimes_{i=1}^{N} \H
+\end{equation}
+and denoted by
+\begin{equation}
+  \ket{\psi} = \ket{\psi_1} \otimes \dots \otimes \ket{\psi_N} =: \ket{\psi_1, \psi_2, \dots, \psi_N}.
+\end{equation}
+In this product space, the order in which each nucleon is associated to a Hilbert space is important. But this violates a fundamental characteristic of elementary particles. There is no intrinsic property of nucleons that allows to distinguish them between each other. To conform to this important assumption, all observables arising from the physical product states of many body systems of identical particles must be independant of any order of the particles. To quantify this, we use the transposition operator $\hat{T}_{ij}$, which acts on a product state and swaps particle $i$ with $j$. The fact that order in a physical product state does not matter means that every physical product state has to be an eigenstate of the transposition operator for every possible transposition:
+\begin{equation}
+  \hat{T}_{ij}\ket\psi = c\ket\psi \, \forall i,j.
+\end{equation}
+Since swapping the particles $i$ and $j$ twice results in the same state, the eigenvalues must satisfy $\abs{c}^2 = 1$ and thus $c = \pm 1$.
+
+As a result, the $N$-body Hilbert space can be divided into three subspaces
+\begin{equation}
+  \H_N = \H_N^s \otimes \H_N^a \otimes \H_N^{\mathrm{indef}},
+\end{equation}
+where $\H_N^s$ is the space of all symmetric states $\ket\psi$, for which $T_{ij}\ket\psi = \ket\psi\, \forall i,j$, $\H_N^a$ is the space of all antisymmetric states $\ket\psi$, for which $T_{ij}\ket\psi = -\ket\psi\, \forall i,j$, and $\H_N^{\mathrm{indef}}$ is the space of all states that are not an eigenstate of the transposition operator and therefore are unphysical.
+
+Particles that are described by symmetric product states underly the Bose-Einstein statistic and are therefore called \textit{bosons}. Particles that are described by antisymmetric product states underly the Fermi-Dirac statistic and are therefor called \textit{fermions}.
+
+The \textit{spin statiscics theorem} states that every particle with half-integer spin are fermions and every particle with integer spin are bosons. This means that we can focus on the antisymmetric space $\H_N^a$, since nucleons have a spin of 1/2.
+
+To obtain a basis for the antisymmetric subspace from the Hilbert space $\H_N$, we can project the basis vectors $\ket\psi$ of $\H_N$ onto $\H_N^a$. To obtain an antisymmetric state, we have to construct a state that consists of every possible permutation of the basis state. To formalize this, we use the Permutation Operator $\hat{P}_\pi$, which reorders the particles according to a permutation $\pi \in S_N$., and compute the state
+\begin{equation}
+  \label{eqn:antisym}
+  \ket{\psi}_a = \frac{1}{N!} \sum_{\pi \in S_N} \sgn(\pi) \hat{P}_\pi \ket\psi,
+\end{equation}
+where $\sgn(\pi)$ is the parity of $\pi$.
+The resulting state is antisymmetric, since a transposition of two particles results in a different sign in every summand. The operator $\hat{A} := \frac{1}{N!}\sum_{\pi \in S_N} \sgn(\pi) \hat{P}_\pi$ is called the \textit{antisymmetrizing operator} and can transform an arbitrary state in a antisymmetrical state.
+The basis of the antisymmetric Hilbert space is then given by applying the antisymmetrizing operator to basis states in $\H_N$ and rescaling by $\sqrt{N!}$ to ensure the normalization.
+
+\eqref{eqn:antisym} has the functional form of a determinant. This means that we can write a symmetrized state $\ket{\psi_1, \psi_2,  \dots \psi_N}_a$ as a \textit{slater determinant}
+\begin{equation}
+  \ket{\psi_1, \psi_2,  \dots \psi_N}_a = \frac{1}{\sqrt{N!}}\det
+  \begin{pmatrix}
+    \ket{\psi_1} & \ket{\psi_1} & \cdots & \ket{\psi_1} \\
+    \ket{\psi_2} & \ket{\psi_2} & \cdots & \ket{\psi_2} \\
+    \vdots       & \vdots       & \ddots & \vdots       \\
+    \ket{\psi_N} & \ket{\psi_N} & \cdots & \ket{\psi_N} \\
+  \end{pmatrix}.
 \end{equation}
 \subsection{Hamiltonian}
-\subsection{Ab initio NCSM}
+A nucleus is bound together by the complex interactions between the nucleons. Nucleon-nucleon interactions are typically very short ranged. This can be seen by looking at the mean binding energy per nucleon. In Nuclei of all masses, this binding energy per nucleon is around \SI{8}{\mega\electronvolt}. Since this doesnt scale with the amount of interaction pairs of nuclei, which grows proportional to the square of the mass number $A$, it follows that nucleons only interact with a constant amount of next neighbors. We can thus approximate a nuclear hamiltonian by limiting ourselfs to nucleon-nucleon interactions between two or three nucleons. Interactions between three nucleons can not be described by interactions between two nucleons and are thus irreducible, so that they have to be modeled seperately. If we split the Hamiltonian of a nucleus with $A$ nucleons into a center-of-mass part and a relative part, we get
+\begin{equation}
+  \H = T_{\mathrm{cm}} + \H_{\mathrm{rel}}
+\end{equation}
+with
+\begin{equation}
+  \H_{\mathrm{rel}} = \frac{1}{A}\sum_{i<j}^A\frac{(\vec{p}_i - \vec{p}_j)^2}{2m} + \sum_{i<j}^A V_{\mathrm{NN}, ij} + \sum_{i<j<k}^AV_{\mathrm{NNN}, ijk}
+\end{equation}
+The interaction terms $V_\mathrm{NN}$ and $V_\mathrm{NNN}$ are highly complex and do not only depend on the distance between the nucleons but also on the spin orbit coupling, the relative momentum and tensor terms.
+\subsection{Ab initio NCSM formalism}
+We use an \textit{ab initio} Method to numerically compute the solution of the stationary Schrödinger equation for a nucleus. Ab initio is a way to solve nuclear many body problems based on realistic interactions using controlled truncations with quantified theoretical uncertainties. For that, we need a \textit{realistic} model of the nuclear hamiltonian using interactions which are precise enough. All ab initio methods use some sort of quantifiable truncation of the full Hilbert space to a smaller model space.
+
+In the \textit{No Core Shell Model}, we want to solve the stationary Schrödinger equation
+\begin{equation}
+  \label{eqn:ncsmsgl}
+  \hat{H} \ket{E_n} = E_n \ket{E_n}
+\end{equation}
+using the many body slater determinants $\{\ket{\phi_i}\}$ of a harmonic oscillator single particle basis. To numerically compute the solution, we expand the above equation into a matrix eigenvalue problem
+\begin{equation}
+  \sum_j \bra{\phi_i}\hat{H}\ket{\phi_j}\braket{\phi_j | E_n} = E_n \braket{\phi_i | E_n}.
+\end{equation}
+The matrix consists of the matrix elements of the hamiltonian $\{\bra{\phi_i}\hat{H}\ket{\phi_j}\}_{ij}$ and the solution is the eigenvalue $E_n$ as well as the eigenvector $\{\braket{\phi_i|E_n}\}_i$. The wanted eigenstate of $\hat{H}$ can then be found by
+\begin{equation}
+  \ket{E_n} = \sum_i \braket{\phi_i | E_n} \ket{\phi_i}.
+\end{equation}
+This method is still not computationally feasible, since the many body basis is infinite dimensional. We thus have to truncate the Hilbert space $\H_A$ to a smaller model space $\mathcal{M}$ of dimension $D$. In the NCSM, this truncation is chosen such that the total excitation quanta is limited to a constant $N_{\mathrm{max}}$.
+% Bild von Nmax-
+To solve the eigenvalue problem in the finite model space, we have to do a variational calculation with the trial state
+\begin{equation}
+  \ket{\psi_T} = \sum_i^{D} C_i \ket{\psi_i},
+\end{equation}
+which formally leads to the matrix eigenvalue problem, truncated to the model space $\mathcal{M}$. Obviously, the reconstructed many body state $\psi_T(D)$ and in particular the calculated energy $E_n(D)$ is dependent on the dimension $D$ of the model space. From the properties of variational principles, it follows that the ground state energy $E_0$ is always less then the expectation value of the trial state. In fact, the much stronger \textit{Hylleraas-Undheim Theorem} holds. It states that all states have a monotonously decreasing energy
+\begin{equation}
+  E_n(D) \geq E_n(D+1)
+\end{equation}
+with increasing model space dimension $D$, if the model space of dimension $D+1$ is constructed by appending one basis vector to the model space of dimension $D$. Furthermore, the energies cant fall below the exact energy $E_n$ of the full Hilbert space. Both the monotonicity and the boundedness from below imply the convergence of $E_n(D)$ to the exact energy.
+
+To calcluate the eigenvalues of truncated matrices, we can use iterative methods such as the \textit{Lanczos Algorithm} and obtain the lowest energy values. Since the matrix dimensions scale with the total amount of nucleons $A$, it is not feasible to calculate energies of higher mass nuclei up to a satisfactory convergence. This opens doors to various extrapolation methods and is the direct connection to the interest of this thesis in extrapolating energy values using neural networks.
+
+\subsection{Similarity Renormalization Group}
+To improve the results of NCSM calculations and improve the convergence of the energy sequences, we can pre-diagonalize the Hamiltonian using the \textit{similarity renormalization group} (SRG). The idea is to use a unitary transformation of the Hamiltonian with a unitary operator $\hat{U}_\alpha$ to define an evolved Hamiltonian $\hat{H}_\alpha$ with
+\begin{equation}
+  \hat{H}_\alpha = \hat{U}_\alpha^\dagger \hat{H} \hat{U}_\alpha =: T_\mathrm{rel} + V_\alpha.
+\end{equation}
+The evolution of $\hat{H}_\alpha$ is given by
+\begin{align}
+  \frac{\mathrm{d}\hat{H}_\alpha}{\mathrm{d}\alpha} = [\hat{\eta}_\alpha, \hat{H}_\alpha]
+\end{align}
+with the \textit{evolution generator}
+\begin{equation}
+  \hat{\eta}_\alpha = \frac{\mathrm{d}\hat{H}_\alpha}{\mathrm{d}\alpha} \hat{U}^\dagger_\alpha = -\hat{\eta}_\alpha^\dagger.
+\end{equation}
+For a choice of an evolution generator and a flow parameter $\alpha$, we get an evolved Hamiltonian $\hat{H}_\alpha$ with matrix entries more focused to the diagonal. This pre-diagonlization conserves the spectrum of $\hat{H}$ and can thus be used in No-Core Shell Model calculations to gain a faster convergence.
 
 \section{Machine Learning}
 
-Since the results of No-Core Shell Model calculations can show a variety of different convergence behaviors depending on the nucleus or the chosen models of the strong interaction force, it is of large interest to develop extrapolation methods which capture the complexity of the resulting sequences and predict accurate values for various input sequences, independent of their convergence behavior.
+Since the results of No-Core Shell Model calculations can show a variety of different convergence behaviors for different observables depending on the nucleus or the chosen models of the strong interaction force, it is of large interest to develop extrapolation methods which capture the complexity of the resulting sequences and predict accurate values for various input sequences, independent of their convergence behavior.
 
 In this section, we provide the theoretical foundation of artificial neural networks, which have already been used in various different physical
-% TODO: Beispiele für Anwendungen (https://arxiv.org/pdf/1810.04009.pdf S.2)
-applications.
+applications, for example in modeling $\beta$-decay half lifes \cite{nnbetadecay} or nuclear charge radii \cite{Akkoyun_2013}.
 
 \subsection{Introduction to Artificial Neural Networks}
 
@@ -29,14 +143,21 @@ An artificial neural network is a pattern recognition algorithm in the field of 
 
 In the human brain, countless cells called \textit{neurons} are connected to each other in a highly complex system. The strengths of these synaptic connections often change in response to external stimuli. This change is how learning takes place in living organisms \cite{Aggarwal2018}.
 
-This learning mechanism is translated to a machine learning algorithm by using basic data processing units that model the behavior of neurons. Because of that, the basic units of an artificial neural network are called neuons as well. These neurons are linked via directed connections. If we wanted to model the structure of the brain more precicely, there would be no restrictions on which neuron could link to which neuron, since this the case in the brain. The machine learning counterpart to this is called a \textit{recurrent network}. The mathematical model of recurrent networks can get arbitrarily complex, such that we only look at neural networks where the neurons are grouped in different layers and only connections from one layer to the next are permitted. This is called a \textit{feedforward network}. Throughout this thesis, we only look at feedforward networks.
+This learning mechanism is translated to a machine learning algorithm by using basic data processing units that model the behavior of neurons. Because of that, the basic units of an artificial neural network are called neurons as well. These neurons are linked via directed connections. If we wanted to model the structure of the brain more precicely, there would be no restrictions on which neuron could link to which neuron, since this the case in the brain. The machine learning counterpart to this is called a \textit{recurrent network}. The mathematical model of recurrent networks can get arbitrarily complex, such that we only look at neural networks where the neurons are grouped in different layers and only connections from one layer to the next are permitted. This is called a \textit{feedforward network}. Throughout this thesis, we only look at feedforward networks.
 
 In a feedforward network, we hope that the layers correspond to rising levels of abstraction, such that the neurons in earlier layers may capture every detail of the input data and neurons in later layers may capture subpatterns in the input data.
-\begin{figure}
-  \includegraphics[width=0.7\textwidth]{media/network.png}
-  \caption{a}
+
+The process of using neural networks to make predictions about data sets consists of multiple phases.
+In general, we want to \textit{train} a neural network by using data sets with \textit{known} predictions and use them to adjust the model parameters of the network to maximize the precision of the predictions. For that, we need a large data set of NCSM calculations with known predictions. We therefore use sequences that have converged enough so that the limit can be used as a prediction target. This set is called the \textit{training set}.
+After training a network, the nets will be \textit{validated} using samples from a \textit{validation set}, which also has known prediction targets. By comparing the predictions of the network with the targets, we can quantify the quality of the network. In \autoref{fig:fitting}, we can see examples of networks, that \textit{underfit} or \textit{overfit} the training data, as well as a network that fits the training data well.
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{media/networkquality.png}
+  \caption{Visualization of different qualities of network fits \cite{underfit}. The red line symbols the data fit that was generated during training. The black dots represent the training samples and the red square represents a validation sample. In the first example \textbf{(a)}, the network doesn't fit the training data well, such that the network prediction of the validation sample indicated by the meeting point of the dotted and solid red line is far away from the prediction target. Such a network would not qualify for evaluation. In the second example \textbf{(b)}, the network fits the data well, such that the prediction is close to the target. This network would meet the quality requirement. In the last example \textbf{(c)}, the network fits the training data too well, such that the prediction for the validation target is too unrealistic. This network would not meet the quality requirements.}
+  \label{fig:fitting}
 \end{figure}
 
+After checking the quality of a network, we can then feed \textit{evaluation data} with unknown prediction targets into the network and gain a network prediction.
 
 \subsection{Structure and Mathematical Framework}
 To understand how an artificial neural network processes large amounts of data,
@@ -49,9 +170,12 @@ we must first discuss the structure, or the \textit{topology} of such networks.
     An example neuron with three input connections $x_1$, $x_2$ and
     $x_3$ and an output connection. \cite{nielsen}
   }
+  \label{fig:neuron}
 \end{wrapfigure}
 In an ANN, the basic data processing unit is a neuron. Its only job is to take
-input signals from directed connections to other neurons and process these inputs to generate an output signal, which can itself be connected to the input of other neurons. The activation $a$ of a neuron is computed by adding the input signals $x_j$ multiplied with connection weights $w_j$, representing the strength of the connection. This weighted sum is then added to a neuron bias $b$ and normalized using an activation function $\sigma$, yielding
+input signals from directed connections to other neurons and process these inputs to generate an output signal, which can itself be connected to the input of other neurons. In \autoref{fig:neuron}, a sample neuron is depicted.
+
+The activation $a$ of a neuron is computed by adding the input signals $x_j$ multiplied with connection weights $w_j$, representing the strength of the connection. This weighted sum is then added to a neuron bias $b$ and normalized using an activation function $\sigma$, yielding
 
 \begin{equation}
   a = \sigma\left(\sum_j w_j x_j + b\right).
@@ -66,7 +190,14 @@ In each layer $n$, there are $L^{(n)}$ neurons and the neurons have an outbound 
 The $L^{(1)}$ neurons of layer 1 have no input connections and can be used to directly feed $L^{(1)}$-dimensional input data to the network.
 The first layer of a neural network is thus called the \textit{input layer}.
 When we feed $L^{(1)}$-dimensional data into the network, it propagates forward, layer-by-layer until the last layer, where the activations can be viewed as the processed output of the network. The last layer is thus called the \textit{output layer}.
-The layers between the input and the output layer are called \textit{hidden layers}, since the activation of those neurons are neither direct inputs nor outputs of the data processing.
+The layers between the input and the output layer are called \textit{hidden layers}, since the activation of those neurons are neither direct inputs nor outputs of the data processing. In \autoref{fig:nn}, we can see a sample feed forward neural network.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{media/network.png}
+  \caption{A neural network with four layers \cite{nielsen}. Here, there are 6 neuron in the input layer ($L^{(1)} = 6$), 3 neurons in each hidden layer ($L^{(2)} = L^{(3)} = 3$) and one output neuron in the output layer ($L^{(4)}=1$). The connection between the neurons are limited to adjacent layers and information is only flowing from left to right. The depicted network is thus a feedforward network.}
+  \label{fig:nn}
+\end{figure}
 
 Now, let $\vec{a}^{(n)} = (a_1, a_2, \dotsb, a_{L^{(n)}}) \in \R^{L^{(n)}}$ be the activations and $\vec{b}^{(n)} = (b_1, b_2, \dotsb, b_{L^{(n)}}) \in \R^{L^{(n)}}$ be the biases of the neurons in Layer $n$. For $1< n < N$, the activation of the neurons in layer $n+1$ can be functionally described by
 \begin{align}
@@ -89,14 +220,14 @@ The function \eqref{eqn:ann_function} is dependent on the weights and biases of 
 \subsection{Optimization Process}
 There are many ways to tackle the optimization process of neural networks. Training methods all rely on evaluating the outputs of some given inputs and comparing them to the values that \textit{should} be output by the network.
 
-To quantify the performance of a given network $f$, we define a \textit{loss function} which depends on given inputs $x_1, x_2, \dots, x_n \in \R^{L^{(1)}}$, their desired outputs $a_1, a_2, \dots, a_n \in \R^{L^{(N)}}$ and, most importantly, the weights $w$ and the biases $b$ of the network, by
+To quantify the performance of a given network $f$, we define a \textit{loss function} which depends on given inputs $x_1, x_2, \dots, x_n \in \R^{L^{(1)}}$, their desired outputs $o_1, o_2, \dots, o_n \in \R^{L^{(N)}}$ and, most importantly, the weights $w$ and the biases $b$ of the network, by
 \begin{equation}
   \label{eqn:mseloss}
-  C(w, b) = \frac{1}{n}\sum_{i=1}^{n}\norm{f(x_i)-a_i}^2
+  C(w, b) = \frac{1}{n}\sum_{i=1}^{n}\norm{f(x_i)-o_i}^2
 \end{equation}
 Note that the loss function is always positive and only zero, when the network predicts the correct output for every input. There are many ways to choose a loss function that has these properties. The function \eqref{eqn:mseloss} is called the \textit{mean squared error} (MSE) and is used throughout this thesis as the loss function.
 
-Using this terminology, we can translate the optimization process of a network to a well-posed problem of finding the minimum of a function. Usually, the number of dimensions is too high to compute the minimum of the loss function analytically. One has to rely on numerical methods to find a local minimum of \eqref{eqn:mseloss}. The numerical algorithm that is used in machine learning is called \textit{gradient descent}.
+Using this terminology, we can translate the optimization process of a network to a well-posed problem of finding the minimum of a function. Usually, the number of dimensions is too high to compute the minimum of the loss function analytically. One has to rely on numerical methods to find a local minimum of \eqref{eqn:mseloss}. A basic numerical algorithm that is used in machine learning is called \textit{gradient descent}. Even though this algorithm is very simplistic, it provides the basis for more sophisticated optimization algorithms such as the \textit{AdamW algorithm}, which is used in this thesis.
 
 The gradient descend method is an iterative method that can be used to find a local minimum of an arbitrary differentiable function $f: \R^n \mapsto \R, x \mapsto f(x)$. Starting from a point $x^{(0)} \in \R^n$, we iteratively adjust the value by a finite amount $\Delta x$. The function will change by
 \begin{equation}
@@ -115,5 +246,29 @@ Applied to the loss function \eqref{eqn:mseloss}, we get the iteration rule
 Since the cost function depends on every input $x_i$, it is computationally infeasible to calculate the gradient of the loss function directly. Therefore, we employ the \textit{stochastic gradient descent} algorithm. The idea is to approximate the gradient of the loss function by dividing the sample set into batches and calculating the gradient only using a single batch of samples. The resulting gradient will be used to adjust the weights and biases. This allows for more steps to be taken with given inputs, but the steps themselves are not as accurate as with gradient descent.
 
 
-To compute the gradient of the loss function, a classical backpropagation algorithm is used.
-% TODO: Maybe etwas dazu schreiben
+To compute the gradient of the loss function for a single training sample $x$, a classical backpropagation algorithm is used. The derivative of the loss function
+\begin{equation}
+  \label{eqn:singleloss}
+  C_x(w, b) = \norm{a_i^{(N)}-o_i}^2
+\end{equation}
+with respect to a weight $w_{ij}^{(N-1)}$ from the $j$-th neuron in the second last layer to the $i$-th neuron in the last layer is calculated using the chain rule to
+\begin{equation}
+  \frac{\partial C_x}{\partial w_{ij}^{(N-1)}} = \frac{\partial C}{\partial a_i^{(N)}}\frac{\partial a_i^{(N)}}{\partial z_i^{(N)}} \frac{\partial z_i^{(N)}}{\partial w_{ij}^{(N-1)}},
+\end{equation}
+where $z_i^{(n)} = \sum_{j=1} w_{ij}^{(n-1)}a_j^{(n-1)}+b_i^{(n)}$ is the activation of neuron $i$ in layer $n$ before it is fed into the activation function. Using the Loss function from \eqref{eqn:singleloss}, we get
+\begin{equation}
+  \frac{\partial C_x}{\partial w_{ij}^{(N-1)}} = 2(a_i^{(N)}-o_i^{(N)}) \cdot \sigma'(z_i^{(N)}) \cdot a_j^{(N-1)}.
+\end{equation}
+Analogously, the derivative of $C_x$ with respect to the bias $b_i^{(N)}$ is given by
+\begin{equation}
+  \frac{\partial C_x}{\partial b_i^{(N)}} = 2(a_i^{(N)}-o_i^{(N)}) \cdot \sigma'(z_i^{(N)}).
+\end{equation}
+These equations can be used to adjust the weights of the second last layer, as well as the biases of the last layer. Since we also need the derivative with respect to weights and biases in the earlier layers, we can use the clever trick of applying this step iteratively to one layer backwards at a time. This is why this algorithm is called backpropagation. To compute those derivatives, we need to know how the loss function changes if activations in the second last layer change. This is given by
+\begin{equation}
+  \frac{\partial C_x}{\partial a_j^{(N-1)}} =\sum_{i=1}^{L^{N}} 2(a_i^{(N)}-o_i^{(N)}) \cdot \sigma'(z_i^{(N)}) \cdot w_{ij}^{(N-1)}.
+\end{equation}
+We can use this derivative to calculate derivatives of the loss function with respect to earlier layers and iteratively determine the gradient of $C_x$. The gradient of the whole loss function $C$ is then given by the average
+\begin{equation}
+  \nabla C = \sum_{x} \nabla C_x
+\end{equation}
+over all training samples in the batch.
