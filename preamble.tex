@@ -9,7 +9,7 @@
   fontsize=11pt
 ]{tudapub}
 
-\usepackage[english]{babel}
+\usepackage[main=english]{babel}
 \usepackage[autostyle]{csquotes}% Anführungszeichen vereinfacht
 
 \usepackage{amsthm}
@@ -28,6 +28,8 @@
 \usepackage{float}
 \usepackage{braket}
 \usepackage{lipsum}
+\usepackage{comment}
+\usepackage[version=4]{mhchem}
 
 \usepackage[separate-uncertainty=true]{siunitx}
 \sisetup{locale=US,per-mode=fraction}
@@ -66,3 +68,4 @@
 \newcommand{\ptl}[1]{\frac{\partial}{\partial #1}}
 \newcommand{\colvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 \newcommand{\hateq}{\mathrel{\widehat{=}}}
+\newcommand{\n}[2]{\ce{^{#1}#2}}

@@ -1,0 +1,130 @@
+To describe the bound state of an nucleus, we use the hamilton formulism of quantum mechanics. We model the system by stating a hamilton operator $\hat{H}$. The quantum state of the system can then be found by solving the eigenvalue problem
+\begin{equation}
+  \label{eqn:sgl}
+  \hat{H}\ket{\psi} = E\ket\psi.
+\end{equation}
+The complete information about the system, including the time evolution and expectation values of observables, lie in the state $\ket\psi$. When looking at \eqref{eqn:sgl}, three questions arise. First, how can we mathematically model these states? Second, how do we choose $\hat{H}$ to model the interactions between the nucleons? Third, how do we go about solving this eigenvalue problem? In this section, we provide answers to these questions.
+\subsection{Hilbert space}
+Since nuclei consist of many smaller particles called \textit{nucleons} (\textit{neutrons} and \textit{protons}), single-particle states are not sufficient to describe composite systems such as nuclei. For that, many-body states must be used. Many body states can be constructed from single particle states.
+
+Since the degrees of freedom for a single nucleon is given by the position, the spin and the isospin of the nucleon, the Hilbert space of a single nucleon is given by the tensor product
+\begin{equation}
+  \H = \H_\mathrm{pos} \otimes \H_\mathrm{spin} \otimes \H_\mathrm{isospin}.
+\end{equation}
+States $\ket\psi$ in this Hilbert space are given by the tensor product of the seperate subspaces
+\begin{equation}
+  \ket\psi = \ket{\psi_\mathrm{pos}}\otimes \ket{\psi_\mathrm{spin}}\otimes \ket{\psi_\mathrm{isospin}}
+\end{equation}
+
+To better describe states in the single nucleon state $\H$, we need a basis that can be constructed from the bases of the subspaces.
+
+Since nucleons have spin $1/2$, we can use the eigenstates of $\hat{S}^2$ and $\hat{S}_z$ with projections $m_s = \pm1/2$ as a basis of $\H_\mathrm{spin}$. We label those basis states as spin up and spin down
+\begin{align}
+  \ket{s=1/2, m_s =  1/2} \equiv \ket{\uparrow} \\
+  \ket{s=1/2, m_s = - 1/2} \equiv \ket{\downarrow}
+\end{align}
+Analogously, the isospin basis states are given by the eigenstates of $\hat{T}^2$ and $\hat{T}_3$ with $t=1/2$ and $m_t=1/2$. The projections $m_t$ are different for the neutron and the proton. Hence we can identify the states with them via
+\begin{align}
+  \ket{t=1/2, m_t =  1/2} \equiv \ket{p} \\
+  \ket{t=1/2, m_t = - 1/2} \equiv \ket{n}.
+\end{align}
+
+For the position state, we use a spherical harmonic oscillator basis with main quantum number $n$, angular momentum $l$ and the projection of the angular momentum along the $z$-axis $m_l$.
+
+If we want to construct a many body state $\ket{\psi}$, consisting of $N$ nucleons with state $\psi_i \in \H$ , we could take the tensor product of them, which is an element of the Hilbert space
+\begin{equation}
+  \H_N = \bigotimes_{i=1}^{N} \H
+\end{equation}
+and denoted by
+\begin{equation}
+  \ket{\psi} = \ket{\psi_1} \otimes \dots \otimes \ket{\psi_N} =: \ket{\psi_1, \psi_2, \dots, \psi_N}.
+\end{equation}
+In this product space, the order in which each nucleon is associated to a Hilbert space is important. But this violates a fundamental characteristic of elementary particles. There is no intrinsic property of nucleons that allows to distinguish them between each other. To conform to this important assumption, all observables arising from the physical product states of many body systems of identical particles must be independant of any order of the particles. To quantify this, we use the transposition operator $\hat{T}_{ij}$, which acts on a product state and swaps particle $i$ with $j$. The fact that order in a physical product state does not matter means that every physical product state has to be an eigenstate of the transposition operator for every possible transposition:
+\begin{equation}
+  \hat{T}_{ij}\ket\psi = c\ket\psi \, \forall i,j.
+\end{equation}
+Since swapping the particles $i$ and $j$ twice results in the same state, the eigenvalues must satisfy $\abs{c}^2 = 1$ and thus $c = \pm 1$.
+
+As a result, the $N$-body Hilbert space can be divided into three subspaces
+\begin{equation}
+  \H_N = \H_N^s \otimes \H_N^a \otimes \H_N^{\mathrm{indef}},
+\end{equation}
+where $\H_N^s$ is the space of all symmetric states $\ket\psi$, for which $T_{ij}\ket\psi = \ket\psi\, \forall i,j$, $\H_N^a$ is the space of all antisymmetric states $\ket\psi$, for which $T_{ij}\ket\psi = -\ket\psi\, \forall i,j$, and $\H_N^{\mathrm{indef}}$ is the space of all states that are not an eigenstate of the transposition operator and therefore are unphysical.
+
+Particles that are described by symmetric product states underly the Bose-Einstein statistic and are therefore called \textit{bosons}. Particles that are described by antisymmetric product states underly the Fermi-Dirac statistic and are therefor called \textit{fermions}.
+
+The \textit{spin statiscics theorem} states that every particle with half-integer spin are fermions and every particle with integer spin are bosons. This means that we can focus on the antisymmetric space $\H_N^a$, since nucleons have a spin of 1/2.
+
+To obtain a basis for the antisymmetric subspace from the Hilbert space $\H_N$, we can project the basis vectors $\ket\psi$ of $\H_N$ onto $\H_N^a$. To obtain an antisymmetric state, we have to construct a state that consists of every possible permutation of the basis state. To formalize this, we use the Permutation Operator $\hat{P}_\pi$, which reorders the particles according to a permutation $\pi \in S_N$., and compute the state
+\begin{equation}
+  \label{eqn:antisym}
+  \ket{\psi}_a = \frac{1}{N!} \sum_{\pi \in S_N} \sgn(\pi) \hat{P}_\pi \ket\psi,
+\end{equation}
+where $\sgn(\pi)$ is the parity of $\pi$.
+The resulting state is antisymmetric, since a transposition of two particles results in a different sign in every summand. The operator $\hat{A} := \frac{1}{N!}\sum_{\pi \in S_N} \sgn(\pi) \hat{P}_\pi$ is called the \textit{antisymmetrizing operator} and can transform an arbitrary state in a antisymmetrical state.
+The basis of the antisymmetric Hilbert space is then given by applying the antisymmetrizing operator to basis states in $\H_N$ and rescaling by $\sqrt{N!}$ to ensure the normalization.
+
+\eqref{eqn:antisym} has the functional form of a determinant. This means that we can write a symmetrized state $\ket{\psi_1, \psi_2,  \dots \psi_N}_a$ as a \textit{slater determinant}
+\begin{equation}
+  \ket{\psi_1, \psi_2,  \dots \psi_N}_a = \frac{1}{\sqrt{N!}}\det
+  \begin{pmatrix}
+    \ket{\psi_1} & \ket{\psi_1} & \cdots & \ket{\psi_1} \\
+    \ket{\psi_2} & \ket{\psi_2} & \cdots & \ket{\psi_2} \\
+    \vdots       & \vdots       & \ddots & \vdots       \\
+    \ket{\psi_N} & \ket{\psi_N} & \cdots & \ket{\psi_N} \\
+  \end{pmatrix}.
+\end{equation}
+\subsection{Hamiltonian}
+A nucleus is bound together by the complex interactions between the nucleons. Nucleon-nucleon interactions are typically very short ranged. This can be seen by looking at the mean binding energy per nucleon. In Nuclei of all masses, this binding energy per nucleon is around \SI{8}{\mega\electronvolt}. Since this doesnt scale with the amount of interaction pairs of nuclei, which grows proportional to the square of the mass number $A$, it follows that nucleons only interact with a constant amount of next neighbors. We can thus approximate a nuclear hamiltonian by limiting ourselfs to nucleon-nucleon interactions between two or three nucleons. Interactions between three nucleons can not be described by interactions between two nucleons and are thus irreducible, so that they have to be modeled seperately. If we split the Hamiltonian of a nucleus with $A$ nucleons into a center-of-mass part and a relative part, we get
+\begin{equation}
+  \H = T_{\mathrm{cm}} + \H_{\mathrm{rel}}
+\end{equation}
+with
+\begin{equation}
+  \H_{\mathrm{rel}} = \frac{1}{A}\sum_{i<j}^A\frac{(\vec{p}_i - \vec{p}_j)^2}{2m} + \sum_{i<j}^A V_{\mathrm{NN}, ij} + \sum_{i<j<k}^AV_{\mathrm{NNN}, ijk}
+\end{equation}
+The interaction terms $V_\mathrm{NN}$ and $V_\mathrm{NNN}$ are highly complex and do not only depend on the distance between the nucleons but also on the spin orbit coupling, the relative momentum and tensor terms.
+\subsection{Ab initio NCSM formalism}
+We use an \textit{ab initio} Method to numerically compute the solution of the stationary Schrödinger equation for a nucleus. Ab initio is a way to solve nuclear many body problems based on realistic interactions using controlled truncations with quantified theoretical uncertainties. For that, we need a \textit{realistic} model of the nuclear hamiltonian using interactions which are precise enough. All ab initio methods use some sort of quantifiable truncation of the full Hilbert space to a smaller model space.
+
+In the \textit{No Core Shell Model}, we want to solve the stationary Schrödinger equation
+\begin{equation}
+  \label{eqn:ncsmsgl}
+  \hat{H} \ket{E_n} = E_n \ket{E_n}
+\end{equation}
+using the many body slater determinants $\{\ket{\phi_i}\}$ of a harmonic oscillator single particle basis. To numerically compute the solution, we expand the above equation into a matrix eigenvalue problem
+\begin{equation}
+  \sum_j \bra{\phi_i}\hat{H}\ket{\phi_j}\braket{\phi_j | E_n} = E_n \braket{\phi_i | E_n}.
+\end{equation}
+The matrix consists of the matrix elements of the hamiltonian $\{\bra{\phi_i}\hat{H}\ket{\phi_j}\}_{ij}$ and the solution is the eigenvalue $E_n$ as well as the eigenvector $\{\braket{\phi_i|E_n}\}_i$. The wanted eigenstate of $\hat{H}$ can then be found by
+\begin{equation}
+  \ket{E_n} = \sum_i \braket{\phi_i | E_n} \ket{\phi_i}.
+\end{equation}
+This method is still not computationally feasible, since the many body basis is infinite dimensional. We thus have to truncate the Hilbert space $\H_A$ to a smaller model space $\mathcal{M}$ of dimension $D$. In the NCSM, this truncation is chosen such that the total excitation quanta is limited to a constant $N_{\mathrm{max}}$.
+% Bild von Nmax-
+To solve the eigenvalue problem in the finite model space, we have to do a variational calculation with the trial state
+\begin{equation}
+  \ket{\psi_T} = \sum_i^{D} C_i \ket{\psi_i},
+\end{equation}
+which formally leads to the matrix eigenvalue problem, truncated to the model space $\mathcal{M}$. Obviously, the reconstructed many body state $\psi_T(D)$ and in particular the calculated energy $E_n(D)$ is dependent on the dimension $D$ of the model space. From the properties of variational principles, it follows that the ground state energy $E_0$ is always less then the expectation value of the trial state. In fact, the much stronger \textit{Hylleraas-Undheim Theorem} holds. It states that all states have a monotonously decreasing energy
+\begin{equation}
+  E_n(D) \geq E_n(D+1)
+\end{equation}
+with increasing model space dimension $D$, if the model space of dimension $D+1$ is constructed by appending one basis vector to the model space of dimension $D$. Furthermore, the energies cant fall below the exact energy $E_n$ of the full Hilbert space. Both the monotonicity and the boundedness from below imply the convergence of $E_n(D)$ to the exact energy.
+
+To calcluate the eigenvalues of truncated matrices, we can use iterative methods such as the \textit{Lanczos Algorithm} and obtain the lowest energy values. Since the matrix dimensions scale with the total amount of nucleons $A$, it is not feasible to calculate energies of higher mass nuclei up to a satisfactory convergence. This opens doors to various extrapolation methods and is the direct connection to the interest of this thesis in extrapolating energy values using neural networks.
+
+\subsection{Similarity Renormalization Group}
+To improve the results of NCSM calculations and improve the convergence of the energy sequences, we can pre-diagonalize the Hamiltonian using the \textit{similarity renormalization group} (SRG). The idea is to use a unitary transformation of the Hamiltonian with a unitary operator $\hat{U}_\alpha$ to define an evolved Hamiltonian $\hat{H}_\alpha$ with
+\begin{equation}
+  \hat{H}_\alpha = \hat{U}_\alpha^\dagger \hat{H} \hat{U}_\alpha =: T_\mathrm{rel} + V_\alpha.
+\end{equation}
+The evolution of $\hat{H}_\alpha$ is given by
+\begin{align}
+  \frac{\mathrm{d}\hat{H}_\alpha}{\mathrm{d}\alpha} = [\hat{\eta}_\alpha, \hat{H}_\alpha]
+\end{align}
+with the \textit{evolution generator}
+\begin{equation}
+  \hat{\eta}_\alpha = \frac{\mathrm{d}\hat{H}_\alpha}{\mathrm{d}\alpha} \hat{U}^\dagger_\alpha = -\hat{\eta}_\alpha^\dagger.
+\end{equation}
+For a choice of an evolution generator and a flow parameter $\alpha$, we get an evolved Hamiltonian $\hat{H}_\alpha$ with matrix entries more focused to the diagonal. This pre-diagonlization conserves the spectrum of $\hat{H}$ and can thus be used in No-Core Shell Model calculations to gain a faster convergence.
