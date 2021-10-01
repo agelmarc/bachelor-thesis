@@ -11,7 +11,7 @@ In the \textit{No Core Shell Model} (NCSM), we want to solve the stationary Schr
 \begin{equation}
   \hat{H} \ket{E_n} = E_n \ket{E_n}
 \end{equation}
-using the many body slater determinants $\{\ket{\phi_i}\}$ of a harmonic oscillator single-particle basis. To numerically compute the solution, we expand the above equation into a matrix eigenvalue problem
+using the many body slater determinants $\{\ket{\phi_i}\}$ of a harmonic oscillator single-particle basis. For that, we have to specify the frequency $\hbar \Omega$ of the oscillator, which in turn determines the \textit{oscillator length} $(\hbar / m\Omega)^{1/2}$. To numerically compute the solution, we expand the above equation into a matrix eigenvalue problem
 \begin{equation}
   \sum_j \bra{\phi_i}\hat{H}\ket{\phi_j}\braket{\phi_j | E_n} = E_n \braket{\phi_i | E_n}.
 \end{equation}
