@@ -21,7 +21,7 @@
    2. (Wie viele WW bei welchen Kernen?)
    3. Wie gut reproduziert das Netz die bekannten Kerne
    4. Diskutieren + H2 herausheben + Vergleich mit Klassischer Extrapolation
-5. Erweiterte Modi (Frequenz, Nmax, Srg) für H2, H3, Li6
+5. Erweiterte Modi (Nmax, Srg) für H2, H3, Li6
    1. Für jeden Trainingsmodus:
       1. Motivation des Trainingsmodus
       2. Erklärung des Trainingsmodus anhand eines Beispiels
@@ -33,8 +33,9 @@
    1. Nicht mehr jeden Modus einzeln zeigen -> Alle Modi in 1 Plot.
    2. Vergleich Abs Diff, Conclusion diff besser
 8. Ausblick / Neue Ansätze
-   1. Idee Frequenzselektion: Zwei Plots zeigen, wo es gut gehen kann und wo es schief gehen kann (chi2bSMSI3B srg0400 He4) -> Große Konsequenz
-   2. Idee H2: Normed Plot zeigen. Nichts hilft. Ausblick Normed für andere Kerne.Mit Frequenzselektion viel besser
+   1. Idee Frequenzfilter: Trainieren und evaluieren mit Freq. links oder rechts vom maximum ()
+   2. Idee Frequenzselektion: Zwei Plots zeigen, wo es gut gehen kann und wo es schief gehen kann (chi2bSMSI3B srg0400 He4) -> Große Konsequenz
+   3. Idee H2: Normed Plot zeigen. Nichts hilft. Ausblick Normed für andere Kerne.Mit Frequenzselektion viel besser
 9. Conclusion
 
 ## Benchmark Set
