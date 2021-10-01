@@ -1,0 +1,15 @@
+Before we introduce the complete workflow to train a network on NCSM ground state energy sequences, we first have to decide on the network structure to use.
+This includes the structure of the input layer, the structure of the output layer, as well as the structure of the hidden layers.
+
+Since NCSM calculations are usually done with multiple different oscillator frequencies $\hbar \Omega$, and different oscillator frequencies result in different convergence rates of the energy sequences, we want to incorporate more then one frequency into the extrapolation in order to give the maximum amount of information about the interaction and the nucleus into the network.
+For that, we do not only try to extrapolate a single energy sequence, but input multiple sequences for different oscillator frequencies into the network.
+We decide on 3 energy sequences with given frequencies to input into the network, since that is the amount of frequencies which are usually available from NCSM calculations of higher-mass nuclei.
+
+In order to determine the structure of the input layer, we must further choose a fixed length of the energy sequences which are put into the network.
+For NCSM calculations for nuclei of higher mass, there are not many $N_\mathrm{max}$ values available, which means that we have to intentionally keep the sequence langth small enough.
+We decide on energy sequences of length 4.
+In summary, the input layer thus has to consist of $L^{(1)} = 3\times 4 = 12$ input neurons.
+
+Since the output of the neural network should be a single real number indicating the extrapolated ground state energy, the output layer consists of $L^{(N)} = 1$ neuron.
+
+For the hidden layers, there is no generally accepted method of defining the most efficient structure. For the most part, the count of the hidden layers as well as the count of the neurons in those layers have to be chosen empirically, such that the network neither underfits nor overfits the data. For our framework, we choose $N = 4$ total layers, such that there are two hidden layers of $L^{(2)} = 24$ and $L^{(3)} = 12$ neurons.
