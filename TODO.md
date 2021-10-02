@@ -50,11 +50,13 @@
 ### Seiten (sehr grob geschätzt)
 
 - Einleitung: 1
-- Grundlagen: 15
+- Grundlagen: 10
 - Framework: 8
 - Vanilla: 3
-- Erweiterte Modi: 3x4 + 2 = 14
+- Erweiterte Modi: 2x4 + 2 = 10
+- Li6: 3
 - Diff: 8
+- Outlook: 5
 - Conclusion: 1
 
 == ~50 Seiten

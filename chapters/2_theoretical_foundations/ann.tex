@@ -85,12 +85,13 @@ For example, if one uses an ANN to classify greyscale images of pixel-size $24\t
 The function \eqref{eqn:ann_function} is dependent on the weights and biases of the connections and neurons. They can be viewed as internal parameters of $f$. When the network is initialized, they are often set to random values and the network will output random data. The challenge of machine learning is to apply algorithms on the outputs of the network to carefully adjust the weights and biases which results in the optimization of the network model.
 
 \subsection{Learning Process of a network}
+\label{sec:sgd}
 There are many ways to tackle the optimization process of neural networks. Training methods all rely on evaluating the outputs of some given inputs and comparing them to the values that \textit{should} be output by the network.
 
 To quantify the performance of a given network $f$, we define a \textit{loss function} which depends on given inputs $x_1, x_2, \dots, x_n \in \R^{L^{(1)}}$, their desired outputs $o_1, o_2, \dots, o_n \in \R^{L^{(N)}}$ and, most importantly, the weights $w$ and the biases $b$ of the network, by
 \begin{equation}
   \label{eqn:mseloss}
-  C(w, b) = \frac{1}{n}\sum_{i=1}^{n}\norm{f(x_i)-o_i}^2
+  C(w, b) = \frac{1}{n}\sum_{i=1}^{n}\norm{f(x_i)-o_i}^2.
 \end{equation}
 Note that the loss function is always positive and only zero, when the network predicts the correct output for every input. There are many ways to choose a loss function that has these properties. The function \eqref{eqn:mseloss} is called the \textit{mean squared error} (MSE) and is used throughout this thesis as the loss function.
 
@@ -99,15 +100,15 @@ Using this terminology, we can translate the optimization process of a network t
 The gradient descend method is an iterative method that can be used to find a local minimum of an arbitrary differentiable function $f: \R^n \mapsto \R, x \mapsto f(x)$. Starting from a point $x^{(0)} \in \R^n$, we iteratively adjust the value by a finite amount $\Delta x$. The function will change by
 \begin{equation}
   \label{eqn:approx}
-  \Delta f \approx \frac{\partial f}{\partial x_1} \Delta x_1 + \dots + \frac{\partial f}{\partial x_2} \Delta x_2 = (\nabla f)(x) \cdot \Delta x
+  \Delta f \approx \frac{\partial f}{\partial x_1} \Delta x_1 + \dots + \frac{\partial f}{\partial x_2} \Delta x_2 = (\nabla f)(x) \cdot \Delta x.
 \end{equation}
 
 If we choose $\Delta x = -\eta (\nabla f)(x)$, with a small positive parameter $\eta$ called the \textit{learning rate}, we can force the right hand side of \eqref{eqn:approx} to be negative. In that way, if we adjust $x$ by $\Delta x$, we can ensure that the new function value at $x^{(1)} = x^{(0)}+ \Delta x$ will be smaller, if the approximation in \eqref{eqn:approx} is good enough. For that, it is important to carefully choose the value of $\eta$ small enough, but not too small. If the step size is too small, the new value will not have changed much and the total amount of steps must be increased to obtain a reasonable optimization.
 
 Applied to the loss function \eqref{eqn:mseloss}, we get the iteration rule
 \begin{align}
-  w_i & \mapsto w_i' = w_i - \eta \frac{\partial C}{\partial w_i} \\
-  b_i & \mapsto b_i' = b_i - \eta \frac{\partial C}{\partial b_i}
+  w_i & \mapsto w_i' = w_i - \eta \frac{\partial C}{\partial w_i}, \\
+  b_i & \mapsto b_i' = b_i - \eta \frac{\partial C}{\partial b_i}.
 \end{align}
 
 Since the cost function depends on every input $x_i$, it is computationally infeasible to calculate the gradient of the loss function directly. Therefore, we employ the \textit{stochastic gradient descent} algorithm. The idea is to approximate the gradient of the loss function by dividing the sample set into batches and calculating the gradient only using a single batch of samples. The resulting gradient will be used to adjust the weights and biases. This allows for more steps to be taken with given inputs, but the steps themselves are not as accurate as with gradient descent.
