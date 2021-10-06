@@ -111,8 +111,7 @@ Applied to the loss function \eqref{eqn:mseloss}, we get the iteration rule
   b_i & \mapsto b_i' = b_i - \eta \frac{\partial C}{\partial b_i}.
 \end{align}
 
-Since the cost function depends on every input $x_i$, it is computationally infeasible to calculate the gradient of the loss function directly. Therefore, we employ the \textit{stochastic gradient descent} algorithm. The idea is to approximate the gradient of the loss function by dividing the sample set into batches and calculating the gradient only using a single batch of samples. The resulting gradient will be used to adjust the weights and biases. This allows for more steps to be taken with given inputs, but the steps themselves are not as accurate as with gradient descent.
-
+Since the cost function depends on every input $x_i$, it is computationally infeasible to calculate the gradient of the loss function directly. Therefore, we employ the \textit{stochastic gradient descent} algorithm. The idea is to approximate the gradient of the loss function by dividing the sample set into batches and calculating the gradient only using a single batch of samples. The resulting gradient will be used to adjust the weights and biases. This allows for more steps to be taken with a single iteration over the training data set, but the steps themselves are not as accurate as with gradient descent. An iteration over the whole training data set is commonly called an \textit{epoch}. The training of a single network can be done by specifying a total amount of training \textit{epochs}, or by specifying a \textit{threshold} for the loss function for when the training should end.
 
 To compute the gradient of the loss function for a single training sample $x$, a classical backpropagation algorithm is used. The derivative of the loss function
 \begin{equation}
