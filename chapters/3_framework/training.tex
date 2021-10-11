@@ -59,11 +59,11 @@ The networks have to be trained using energy sequences with known limits. Since 
 From the NCSM energy sequences, we first generate a large pool of input data which is formatted such that it can be input into the networks. This is necessary since NCSM energy sequences are generally calculated from more than three oscillator frequencies and more values of $N_\mathrm{max}$.
 
 To generate formatted input sequences, we first purge a few exotic cases from the raw input data. Since oscillator frequencies of too high or too low values result in very slow-to-converge sequences, we restrict the data of the training process to oscillator frequencies between $\hbar\Omega=\SI{12}{\mega\electronvolt}$ and $\hbar\Omega=\SI{32}{\mega\electronvolt}$. Furthermore, we discard every NCSM calculation done for $N_\mathrm{max} = 0$, since they can result in unphysical energy values. For each nucleus and interaction, we also discard sequences for which the difference between the energy value for the highest $N_\mathrm{max}$ and the limit is higher than \SI{0.05}{\mega\electronvolt} to rule out further special sequences that do not converge enough to the desired limit.
-In \autoref{fig:trainingseq}, an example \textit{raw} NCSM calculation is shown, using an SRG evolved Hamiltonian based on the \textit{chi2bM3A} interaction of the \n{2}{H} nucleus. The flow parameter is given by $\SI{0.04}{\femto\metre^4}$. This is an example of a calculation, which is suitable for training, since the calculations were done for sufficiently large $N_\mathrm{max}$ and the limit could be extracted. We can see the convergence for higher $N_\mathrm{max}$ to a value independant on the oscillator frequency.
+In \autoref{fig:trainingseq}, an example \textit{raw} NCSM calculation is shown, using an SRG evolved Hamiltonian based on the \textit{chi2bM3A} interaction of the \n{2}{H} nucleus. The flow parameter is given by $\SI{0.04}{\femto\metre^4}$. This is an example of a calculation, which is suitable for training, since the calculations were done for sufficiently large $N_\mathrm{max}$ and the limit could be extracted. We can see the convergence for higher $N_\mathrm{max}$ to a value independent on the oscillator frequency.
 
 \begin{figure}[H]
   \centering
-  \input{media/example_ncsm.pgf}
+  \input{media/example_sequence.pgf}
   \caption{NCSM results for the $\n{2}{H}$ nucleus. Here, the interaction used for the hamiltonian is \textit{chi2bM3A}. Furthermore, the hamiltionian is SRG evolved using a flow parameter of $\SI{0.04}{\femto\metre^4}$. Each point is the result of a NCSM calculation with a given $N_\mathrm{max}$ and oscillator frequency $\hbar \Omega$.}
   \label{fig:trainingseq}
 \end{figure}

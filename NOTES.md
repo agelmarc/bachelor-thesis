@@ -7,16 +7,16 @@
    - Hyperparameter vergessen: scr, hwHOmax & hwHOmin
 4. Reproduction
 5. Extended Modes
+   - filters shoud:
+     - be consistent
+     - make extrapolation better
 6. Li6
 7. Diff
    - reduce seq_len to 3 for comparability between abs and diff
 8. Outlook
    - H3 Frequency Filter: chi2bSMSI4B_srg0800
+   - Weiterer ansatz: monotonität dem netzwerk einzwingen
 9. Conclusion
-
-## Für Mittwoch:
-
-- Classical Extrapolation only for H3 and He4??
 
 ## Trainingsmodi
 

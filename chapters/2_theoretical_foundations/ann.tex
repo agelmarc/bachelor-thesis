@@ -1,5 +1,5 @@
 
-Since the results of No-Core Shell Model calculations can show a variety of different convergence behaviors for different observables depending on the nucleus or the chosen models of the strong interaction force, it is of large interest to develop extrapolation methods which capture the complexity of the resulting sequences and predict accurate values for various input sequences, independent of their convergence behavior.
+Since the results of No-Core Shell Model calculations can show a variety of different convergence behaviors for different observables depending on the nucleus or the chosen models of the nuclear force, it is of large interest to develop extrapolation methods which capture the complexity of the resulting sequences and predict accurate values for various input sequences.
 
 In this section, we provide the theoretical foundation of artificial neural networks, which have already been used in various different physical
 applications, for example in modeling $\beta$-decay half lifes \cite{nnbetadecay} or nuclear charge radii \cite{Akkoyun_2013}.
@@ -8,14 +8,14 @@ applications, for example in modeling $\beta$-decay half lifes \cite{nnbetadecay
 
 An artificial neural network is a pattern recognition algorithm in the field of machine learning. The term \textit{neural network} refers to the original idea to mimic the learning mechanism in biological organisms.
 
-In the human brain, countless cells called \textit{neurons} are connected to each other in a highly complex system. The strengths of these synaptic connections often change in response to external stimuli. This change is how learning takes place in living organisms \cite{Aggarwal2018}.
+In the human brain, countless cells called neurons are connected to each other in a highly complex system. The strengths of these synaptic connections often change in response to external stimuli. This change is how learning takes place in living organisms \cite{Aggarwal2018}.
 
 This learning mechanism is translated to a machine learning algorithm by using basic data processing units that model the behavior of neurons. Because of that, the basic units of an artificial neural network are called neurons as well. These neurons are linked via directed connections. If we wanted to model the structure of the brain more precicely, there would be no restrictions on which neuron could link to which neuron, since this the case in the brain. The machine learning counterpart to this is called a \textit{recurrent network}. The mathematical model of recurrent networks can get arbitrarily complex, such that we only look at neural networks where the neurons are grouped in different layers and only connections from one layer to the next are permitted. This is called a \textit{feedforward network}. Throughout this thesis, we only look at feedforward networks.
 
 In a feedforward network, we hope that the layers correspond to rising levels of abstraction, such that the neurons in earlier layers may capture every detail of the input data and neurons in later layers may capture subpatterns in the input data.
 
 The process of using neural networks to make predictions about data sets consists of multiple phases.
-In general, we want to \textit{train} a neural network by using data sets with \textit{known} predictions and use them to adjust the model parameters of the network to maximize the precision of the predictions. For that, we need a large data set of NCSM calculations with known predictions. We therefore use sequences that have converged enough so that the limit can be used as a prediction target. This set is called the \textit{training set}.
+In general, we want to \textit{train} a neural network by using data sets with known predictions and use them to adjust the model parameters of the network to maximize the precision of the predictions. For that, we need a large data set of NCSM calculations with known predictions. We therefore use sequences that have converged enough so that the limit can be used as a prediction target. This set is called the \textit{training set}.
 After training a network, the nets will be \textit{validated} using samples from a \textit{validation set}, which also has known prediction targets. By comparing the predictions of the network with the targets, we can quantify the quality of the network. In \autoref{fig:fitting}, we can see examples of networks, that \textit{underfit} or \textit{overfit} the training data, as well as a network that fits the training data well.
 
 \begin{figure}[H]

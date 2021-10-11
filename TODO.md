@@ -5,5 +5,6 @@
 
 ### Verbesserung Framework
 
-- Histogramm mit Gaussfit
-- Bild von Netzwerk
+- 3.2.2 (example histogram) legende sortieren
+- WW besser ausformulieren
+- dataflow diagram 3.1.1 verallgemeinern
