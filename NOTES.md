@@ -4,8 +4,8 @@
 2. Grundlagen
    - HO basis not asymptotically good
 3. Framework
-   - Hyperparameter vergessen: scr, hwHOmax & hwHOmin
 4. Reproduction
+   - impact of number of frequencies?
 5. Extended Modes
    - filters shoud:
      - be consistent
@@ -26,15 +26,6 @@ Je Abs und Diff
 - Nmax
 - Srg
 - Frequenzfilter
-
-## Benchmark Set
-
-- H2, H3, He4: 3B oder 4B 0400 + 0800
-
-### Welche Plots
-
-- 3.2: Plots von NCSM Sequenzen, Netzinputs
-- 4.1, 5.1.3: für jeden Modus ein Plot (so wie immer)
 
 ### Seiten (sehr grob geschätzt)
 
