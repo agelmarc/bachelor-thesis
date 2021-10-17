@@ -9,13 +9,12 @@ In \autoref{fig:eval_extended}, the evaluation of our three nuclei are shown. Ea
 
 We again begin by looking at the nuclei \n{3}{H} and \n{4}{He}. For both training modes, we see that the predictions get closer to the variational boundary, which means that the training modes yield overall better predictions, since the sequences are already converged enough. Interestingly, the two trainingmodes seem to only impact the accuracy of the prediction. The uncertainty of both trainingmodes are comparable to the uncertainty of the prediction by the basic extrapolation framework.
 
-If we compare the two trainingmodes for those nuclei, we see that the $N_\mathrm{max}$-limitation mode is less impactful than the SRG-filter mode. This can be explained by the fact that the some of the sequences of the \n{3}{H} and the \n{4}{He} nucleus are already converged enough. Since we explicitly remove bare Hamiltonians in the SRG-filter mode, the training set gets limited to a smaller size of faster-to-converge sequences, thus training the net better to those cases. This can especially be seen in the \n{4}{He} nucleus, where there are sequences which have a
+If we compare the two trainingmodes for those nuclei, we see that the $N_\mathrm{max}$-limitation mode is less impactful than the SRG-filter mode. This can be explained by the fact that the some of the sequences of the \n{3}{H} and the \n{4}{He} nucleus are already converged enough. Since we explicitly remove bare Hamiltonians in the SRG-filter mode, the training set gets limited to a smaller size of faster-to-converge sequences, thus training the net better to those cases. This can especially be seen in the \n{4}{He} nucleus, where there are sequences which have a very strong convergence rate. Here, the SRG-filter mode results lie very close to the variational boundary. The limitation on the $N_\mathrm{max}$ values also have a positive impact on the evaluation. This may indicate that the networks have learned from the constant sequences of high $N_\mathrm{max}$ values to linearly extrapolate the results up to a certain point, which results in the too low values for low $N_\mathrm{max}$ sequences, as is the case for our basic extrapolation framework.
 % 3h, 4he:
-% in comparison to vanilla: all better
-% comparable precision, different accuracy.
 % nmax: a bit better
 % srg: way better
 
+For the nucleus \n{2}{H}, our basic framework showed a totally different systematic behaviour than for the nuclei \n{3}{H} and \n{4}{He}. This is also the case for both new training modes.
 % 2h:
 % nmax worse than vanilla (WHY?)
 % nmax geq 10: srg under varbound!

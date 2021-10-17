@@ -40,3 +40,11 @@ Je Abs und Diff
 - Conclusion: 1
 
 == ~50 Seiten
+
+### Treffen mit Robert (Donnerstag)
+
+- Große spannweite
+- 6 und 7 tauschen
+- nolting band 7
+- ring schuck nuclear many body problem
+- diff mode zstl tabelle
