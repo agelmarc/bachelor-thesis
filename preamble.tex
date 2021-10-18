@@ -19,6 +19,8 @@
 \usepackage{mathtools}
 
 \usepackage{tabularx}
+\usepackage{booktabs}
+
 \usepackage{pgf}
 \usepackage{adjustbox}
 \usepackage{verbatim}
@@ -30,9 +32,8 @@
 \usepackage{lipsum}
 \usepackage{comment}
 \usepackage[version=4]{mhchem}
-\usepackage{svg}
 
-\usepackage[separate-uncertainty=true]{siunitx}
+\usepackage{siunitx}
 \sisetup{locale=US,per-mode=fraction}
 
 \usepackage{subcaption}
@@ -50,8 +51,9 @@
 ]{biblatex}
 
 \usepackage{chngcntr}
-\counterwithin{figure}{section}
-
+\makeatletter
+\let\c@table\c@figure
+\makeatother
 % \setlength{\intextsep}{0pt}
 
 \newcommand{\R}{\mathbb{R}}
