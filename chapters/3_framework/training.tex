@@ -53,6 +53,7 @@ After the optimization is done, the network is validated using a \textit{validat
 To implement the neural network, we use \textit{pytorch}, which is a machine learning library for Python.
 
 \subsection{Preparation of input data for the training process}
+\label{sec:inflate}
 The networks have to be trained using energy sequences with known limits. Since it is impossible to calculate the limit using the full Hilbert space, we have to base the training on NCSM sequences which can be calculated to a sufficiently large value of $N_\mathrm{max}$, such that the lowest value for the highest $N_\mathrm{max}$ gives a good enough approximate for the limit. For that, we need to assume that the sequences have more or less converged to the limit. For the training, we thus use NCSM calculations from the nuclei \n{2}{H}, \n{3}{H} and \n{4}{He}. The interactions used are chiral two-body and three-body interactions.
 
 % Generation of input data / Explain inflate
