@@ -4,6 +4,7 @@
 
 - PDFA in Präambel einschalten (pdfa=false auf pdfa=true setzen), sowie Metadata entkommentieren
 - Quellen für Grundlagen einfügen
+- Gutachter hinzufügen
 
 ### Verbesserung Framework
 
@@ -13,8 +14,7 @@
 
 ## TODO bis Dienstag
 
-- Extended fertig schreiben
 - Diff fertig schreiben
 - Li6 fertig schreiben
 - outlook fertig schreiben
-- grundlagen überarbeiten (basis- und interaktionspart)
+- Introduction fertig schreiben
