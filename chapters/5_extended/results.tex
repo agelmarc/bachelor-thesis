@@ -14,7 +14,9 @@ If we compare the two trainingmodes for those nuclei, we see that the $N_\mathrm
 % nmax: a bit better
 % srg: way better
 
-For the nucleus \n{2}{H}, our basic framework showed a totally different systematic behaviour than for the nuclei \n{3}{H} and \n{4}{He}. This is also the case for both new training modes.
+For the nucleus \n{2}{H}, our basic framework showed a totally different systematic behaviour than for the nuclei \n{3}{H} and \n{4}{He}. This is also the case for both new training modes. Especially the $N_\mathrm{max}$ training mode seems to extrapolate not far enough, such that the predictions do not conform to the variational boundary at $N_\mathrm{max} = 12$. In fact, the $N_\mathrm{max}$-limitation mode predicts higher ground-state energies for both SRG flow parameters and for all $N_\mathrm{max}$ values. Even though the $N_\mathrm{max}$-limitation mode is thought to handle unconverged sequences better than the basic training mode, this can be explained by the fact that the \n{2}{H} sequences are not only converged until $N_\mathrm{max} = 12$, but also does converge quite slowly. This leads to a very broad range of energy values at $N_\mathrm{max} = 12$ for all the frequencies, but the sequences themself are relatively flat, leading to a higher prediction of the $N_\mathrm{max}$-limitation training mode. The SRG-filter training mode seems to perform better than the basic training mode. Even though this training modes still produces too high predictions for $N_\mathrm{max} = 8$, the predictions for all $N_\mathrm{max} \geq 10$ are lower than the variational boundary at $N_\mathrm{max} = 12$. This is a great improvement to the other two training modes.
+
+The comparison between the two different SRG flow parameters yield the same results as in the previous chapter, where we considered our training without further modifications. We can see that the network predictions do not change much when evaluating the higher srg flow parameter. This is especially interesting in the case of \n{4}{He}, where the difference between the NCSM sequence is the most. At $\eta = \srg{0.04}$, the lower sequences of $\hbar \Omega = \SI{12}{\mega\electronvolt}$ and \SI{14}{\mega\electronvolt} are converging fast, but they have not reached a sufficient degree of convergence, such that the values at $N_\mathrm{max} = 12$ are still spread far apart. For $\eta = \srg{0.08}$, those sequences have converged sufficiently until $N_\mathrm{max} = 12$. We can see that the networks react very consistently between the different sequences.
 % 2h:
 % nmax worse than vanilla (WHY?)
 % nmax geq 10: srg under varbound!
@@ -22,4 +24,4 @@ For the nucleus \n{2}{H}, our basic framework showed a totally different systema
 % difference srg
 % same as vanilla: extrapolations go up
 
-% srg can handle converged and unconverged sequences
+

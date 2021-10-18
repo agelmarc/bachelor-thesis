@@ -1,1 +1,12 @@
-e
+In this chapter, we extended our basic extrapolation framework by modifying the training process of the neural networks in two distinct ways to see how they affect the extrapolation of ground-state energies. In a first modification, we decided on only training the networks by using sequences up to $N_\mathrm{max} = 24$. In a second modification, the networks were only trained by NCSM sequences coming from SRG evolved Hamiltionians with a flow parameter $\eta$ of \srg{0.04} or higher. We discussed these \textit{training modes} by evaluating the nuclei \n{2}{H}, \n{3}{H} and \n{4}{He} and comparing the results to our basic training mode from \autoref{chap:reproduction}.
+
+To classify our training modes, we first give two important aspects that those training modes have to show. Firstly, they should result in extrapolations which are "better" in some way when compared to the unmodified training process. For example, they should either result in a smaller uncertainty or in a different prediction which is more reasonable given the NCSM sequences. Secondly, a modification of the training set should result in consistent extrapolations across different scenarios, such as unconverged NCSM sequences and NCSM sequences with a low convergence rate.
+
+Keeping these conditions in mind, we can say that the SRG-filter training mode so far provided the most reasonable results across all nuclei. The unmodified training mode as well as the $N_\mathrm{max}$-limitation training mode predicted too low ground-state energies for the nuclei \n{3}{H} and \n{4}{He} but too high energies for \n{2}{H}. For all of these nuclei, the SRG-filter training mode provided more reasonable predictions. Also, the SRG-filter training mode provided the most consistent results, since it can handle the more converged and more unconverged sequences of \n{3}{H} and \n{4}{He} respectively, as well as the slow-to-converge sequences of \n{2}{H}.
+
+The $N_\mathrm{max}$-limitation filter provided more reasonable results for \n{3}{H} and \n{4}{He}, but too high values for \n{2}{H}, even higher than the unmodified training mode, making it the most unconsistent and unreasonable among the two training modes discussed.
+
+Considering all of the above, it seems that the SRG-filter training mode provides the most promisable results. In order to reach a final verdict about the two training modes, we will see how they behave in a scenario which is more close to a real use-case of an extrapolation in \autoref{chap:li6}, where we evaluate the NCSM calculations for the nucleus \n{6}{Li}.
+% CONCLUSION
+% srg can handle converged and unconverged sequences can be seen by h2 and he4
+% Nmax cant handle slow converging sequences
