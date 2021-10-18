@@ -1,0 +1,19 @@
+Using our newly constructed difference based extrapolation framework, we can now do the same analysis on our three nuclei \n{2}{H}, \n{3}{H} and \n{4}{He} using the same interaction as used earlier. Even though the difference based framework uses differences to compute a difference prediction internally, the final evaluation will still base off the same absolute energy differences and result in an absolute energy prediction. This means that we can apply our different evaluation modifications from \autoref{chap:extended} and discuss the influences of them on the difference based evaluation. Furthermore, using the same nuclei allows us to compare the difference based extrapolation and the absolute value extrapolation.
+
+The results of our difference based extrapolation is shown in \autoref{fig:eval_diff}. The final extrapolated values and their uncertainty are shown in \autoref{tab:eval_diff} as well for each $N_\mathrm{max}$ and each SRG flow parameter.
+
+% Generell: Predictions VIEL genauer, besonders bei hohem Nmax
+% Generell: Trainingsmodes machen nicht mehr viel aus
+% Kein unterbinden mehr -> "monoton steigende predictions" sind nicht mehr da
+% He4 0.04 vs 0.08: Effekt von sehr unterschiedlichen sequenzen viel größer als bei abs (abs besser)
+% 0.08: SRG hat viel mehr auswirkung als bei abs und bei 0.04
+% H2: 0.08 schlechter als 0.04
+
+\input{chapters/6_diff/table.tex}
+a
+\begin{figure}[H]
+  \includegraphics[width=\textwidth]{media/diff_evaluation.pdf}
+  \caption{a}
+  \label{fig:eval_diff}
+\end{figure}
+
