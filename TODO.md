@@ -14,7 +14,5 @@
 
 ## TODO bis Dienstag
 
-- Diff fertig schreiben
-- Li6 fertig schreiben
 - outlook fertig schreiben
 - Introduction fertig schreiben
