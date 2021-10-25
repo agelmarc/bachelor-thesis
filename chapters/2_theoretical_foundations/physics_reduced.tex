@@ -25,17 +25,17 @@ The matrix consists of the matrix elements of the Hamiltonian $\{\bra{\phi_i}\ha
   \caption{An example configuration of \n{16}{O} with $N_\mathrm{max} = 6$ excitation quanta \cite{sommerschule}. The horizontal lines represent different energy levels of the harmonic oscillator. Multiple nucleons (blue and red balls) are excited from their ground state, leaving holes(uncolored balls).}
   \label{fig:ncsm}
 \end{wrapfigure}
-This method is still not computationally feasible, since the many-body basis is infinite dimensional. We thus have to truncate the Hilbert space $\H_A$ to a smaller model space $\mathcal{M}$ of dimension $D$. In the NCSM, this truncation is chosen such that slater determinants with at most $N_\mathrm{max}$ excitation quanta are used in the model space. The \n{16}{O} configuration shown in \autoref{fig:ncsm} has $N_\mathrm{max} = 6$ excitation quanta and the respective Slater determinant is present in all model spaces with $N_\mathrm{max} \geq 6$.
+This method is still not computationally feasible, since the many-body basis is infinite dimensional. We thus have to truncate the Hilbert space $\H_A$ to a smaller model-space $\mathcal{M}$ of dimension $D$. In the NCSM, this truncation is chosen such that Slater determinants with at most $N_\mathrm{max}$ excitation quanta are used in the model-space. The \n{16}{O} configuration shown in \autoref{fig:ncsm} has $N_\mathrm{max} = 6$ excitation quanta and the respective Slater determinant is present in all model-spaces with $N_\mathrm{max} \geq 6$.
 % Bild von Nmax-
-To solve the eigenvalue problem in the finite model space, we have to do a variational calculation with the trial state
+To solve the eigenvalue problem in the finite model-space, we have to do a variational calculation with the trial state
 \begin{equation}
   \ket{\psi_T} = \sum_i^{D} C_i \ket{\psi_i},
 \end{equation}
-which formally leads to the matrix eigenvalue problem, truncated to the model-space $\mathcal{M}$. Obviously, the reconstructed many-body state $\psi_T(D)$ and in particular the calculated energy $E_n(D)$ is dependent on the dimension $D$ of the model space. From the properties of variational principles, it follows that the ground state energy $E_0$ is always less then the expectation value of the trial state. In fact, the much stronger \textit{Hylleraas-Undheim Theorem} holds. It states that all states have a monotonously decreasing energy
+which formally leads to the matrix eigenvalue problem, truncated to the model-space $\mathcal{M}$. Obviously, the reconstructed many-body state $\psi_T(D)$ and in particular the calculated energy $E_n(D)$ is dependent on the dimension $D$ of the model-space. From the properties of variational principles, it follows that the ground state energy $E_0$ is always less then the expectation value of the trial state. In fact, the much stronger \textit{Hylleraas-Undheim Theorem} holds. It states that all states have a monotonously decreasing energy
 \begin{equation}
   E_n(D) \geq E_n(D+1)
 \end{equation}
-with increasing model space dimension $D$, if the model space of dimension $D+1$ is constructed by appending one basis vector to the model space of dimension $D$. Furthermore, the energies cannot fall below the exact energy $E_n$ of the full Hilbert space. Both the monotonicity and the boundedness from below imply the convergence of $E_n(D)$ to the exact energy.
+with increasing model-space dimension $D$, if the model-space of dimension $D+1$ is constructed by appending one basis vector to the model-space of dimension $D$. Furthermore, the energies cannot fall below the exact energy $E_n$ of the full Hilbert space. Both the monotonicity and the boundedness from below imply the convergence of $E_n(D)$ to the exact energy.
 
 To calcluate the eigenvalues of truncated matrices, we can use iterative methods such as the \textit{Lanczos algorithm} and obtain the lowest energy values. Since the matrix dimensions scale with the total amount of nucleons $A$, it is not feasible to calculate energies of heavier nuclei up to a satisfactory convergence. This opens doors to various extrapolation methods and is the direct connection to the interest of this thesis in extrapolating ground-state energy values using neural networks \cite{sommerschule,ringschuck}.
 

@@ -64,7 +64,7 @@ where $\sgn(\pi)$ is the parity of $\pi$.
 The resulting state is antisymmetric, since a transposition of two particles results in a different sign in every summand. The operator $\hat{A} := \frac{1}{N!}\sum_{\pi \in S_N} \sgn(\pi) \hat{P}_\pi$ is called the \textit{antisymmetrizing operator} and can transform an arbitrary state in a antisymmetrical state.
 The basis of the antisymmetric Hilbert space is then given by applying the antisymmetrizing operator to basis states in $\H_N$ and rescaling by $\sqrt{N!}$ to ensure the normalization.
 
-\eqref{eqn:antisym} has the functional form of a determinant. This means that we can write a symmetrized state $\ket{\psi_1, \psi_2,  \dots \psi_N}_a$ as a \textit{slater determinant}
+\eqref{eqn:antisym} has the functional form of a determinant. This means that we can write a symmetrized state $\ket{\psi_1, \psi_2,  \dots \psi_N}_a$ as a \textit{Slater determinant}
 \begin{equation}
   \ket{\psi_1, \psi_2,  \dots \psi_N}_a = \frac{1}{\sqrt{N!}}\det
   \begin{pmatrix}
@@ -85,14 +85,14 @@ with
 \end{equation}
 The interaction terms $V_\mathrm{NN}$ and $V_\mathrm{NNN}$ are highly complex and do not only depend on the distance between the nucleons but also on the spin orbit coupling, the relative momentum and tensor terms.
 \subsection{Ab initio NCSM formalism}
-We use an \textit{ab initio} Method to numerically compute the solution of the stationary Schrödinger equation for a nucleus. Ab initio is a way to solve nuclear many body problems based on realistic interactions using controlled truncations with quantified theoretical uncertainties. For that, we need a \textit{realistic} model of the nuclear hamiltonian using interactions which are precise enough. All ab initio methods use some sort of quantifiable truncation of the full Hilbert space to a smaller model space.
+We use an \textit{ab initio} Method to numerically compute the solution of the stationary Schrödinger equation for a nucleus. Ab initio is a way to solve nuclear many body problems based on realistic interactions using controlled truncations with quantified theoretical uncertainties. For that, we need a \textit{realistic} model of the nuclear hamiltonian using interactions which are precise enough. All ab initio methods use some sort of quantifiable truncation of the full Hilbert space to a smaller model-space.
 
 In the \textit{No Core Shell Model}, we want to solve the stationary Schrödinger equation
 \begin{equation}
   \label{eqn:ncsmsgl}
   \hat{H} \ket{E_n} = E_n \ket{E_n}
 \end{equation}
-using the many body slater determinants $\{\ket{\phi_i}\}$ of a harmonic oscillator single particle basis. To numerically compute the solution, we expand the above equation into a matrix eigenvalue problem
+using the many body Slater determinants $\{\ket{\phi_i}\}$ of a harmonic oscillator single particle basis. To numerically compute the solution, we expand the above equation into a matrix eigenvalue problem
 \begin{equation}
   \sum_j \bra{\phi_i}\hat{H}\ket{\phi_j}\braket{\phi_j | E_n} = E_n \braket{\phi_i | E_n}.
 \end{equation}
@@ -100,17 +100,17 @@ The matrix consists of the matrix elements of the hamiltonian $\{\bra{\phi_i}\ha
 \begin{equation}
   \ket{E_n} = \sum_i \braket{\phi_i | E_n} \ket{\phi_i}.
 \end{equation}
-This method is still not computationally feasible, since the many body basis is infinite dimensional. We thus have to truncate the Hilbert space $\H_A$ to a smaller model space $\mathcal{M}$ of dimension $D$. In the NCSM, this truncation is chosen such that the total excitation quanta is limited to a constant $N_{\mathrm{max}}$.
+This method is still not computationally feasible, since the many body basis is infinite dimensional. We thus have to truncate the Hilbert space $\H_A$ to a smaller model-space $\mathcal{M}$ of dimension $D$. In the NCSM, this truncation is chosen such that the total excitation quanta is limited to a constant $N_{\mathrm{max}}$.
 % Bild von Nmax-
-To solve the eigenvalue problem in the finite model space, we have to do a variational calculation with the trial state
+To solve the eigenvalue problem in the finite model-space, we have to do a variational calculation with the trial state
 \begin{equation}
   \ket{\psi_T} = \sum_i^{D} C_i \ket{\psi_i},
 \end{equation}
-which formally leads to the matrix eigenvalue problem, truncated to the model space $\mathcal{M}$. Obviously, the reconstructed many body state $\psi_T(D)$ and in particular the calculated energy $E_n(D)$ is dependent on the dimension $D$ of the model space. From the properties of variational principles, it follows that the ground state energy $E_0$ is always less then the expectation value of the trial state. In fact, the much stronger \textit{Hylleraas-Undheim Theorem} holds. It states that all states have a monotonously decreasing energy
+which formally leads to the matrix eigenvalue problem, truncated to the model-space $\mathcal{M}$. Obviously, the reconstructed many body state $\psi_T(D)$ and in particular the calculated energy $E_n(D)$ is dependent on the dimension $D$ of the model-space. From the properties of variational principles, it follows that the ground state energy $E_0$ is always less then the expectation value of the trial state. In fact, the much stronger \textit{Hylleraas-Undheim Theorem} holds. It states that all states have a monotonously decreasing energy
 \begin{equation}
   E_n(D) \geq E_n(D+1)
 \end{equation}
-with increasing model space dimension $D$, if the model space of dimension $D+1$ is constructed by appending one basis vector to the model space of dimension $D$. Furthermore, the energies cant fall below the exact energy $E_n$ of the full Hilbert space. Both the monotonicity and the boundedness from below imply the convergence of $E_n(D)$ to the exact energy.
+with increasing model-space dimension $D$, if the model-space of dimension $D+1$ is constructed by appending one basis vector to the model-space of dimension $D$. Furthermore, the energies cant fall below the exact energy $E_n$ of the full Hilbert space. Both the monotonicity and the boundedness from below imply the convergence of $E_n(D)$ to the exact energy.
 
 To calcluate the eigenvalues of truncated matrices, we can use iterative methods such as the \textit{Lanczos Algorithm} and obtain the lowest energy values. Since the matrix dimensions scale with the total amount of nucleons $A$, it is not feasible to calculate energies of higher mass nuclei up to a satisfactory convergence. This opens doors to various extrapolation methods and is the direct connection to the interest of this thesis in extrapolating energy values using neural networks.
 
