@@ -1,11 +1,11 @@
-In the previous chapters, we outlaid a basic extrapolation framework for ground-state energy sequences coming from NCSM calculations. The network extrapolations provided suboptimal results for the fast-to-converge sequences from \n{3}{H} and \n{4}{He}, as the network consistently predicted a too low ground-state energy, especially for the smaller $N_\mathrm{max}$ values, which are important for later use-cases for nuclei whose NCSM calculations cannot be done to a sufficiently high $N_\mathrm{max}$. For the \n{2}{H} nucleus, the networks predicted values which were too high, but comparable to classical extrapolations coming from exponential function fits.
+In the previous chapters, we have outlaid a basic extrapolation framework for ground-state energy sequences coming from NCSM calculations. The network extrapolations have provided suboptimal results for fast converging sequences from \n{3}{H} and \n{4}{He}, as the network consistently predicted a ground-state energy that is too low, especially for the smaller $N_\mathrm{max}$ values, which are important for later use-cases for nuclei whose NCSM calculations cannot be done to a sufficiently high $N_\mathrm{max}$. For the \n{2}{H} nucleus, the networks have predicted values which were too high, but comparable to classical extrapolations coming from exponential function fits.
 
-In this section, we want to modify the training step of our extrapolation framework using two different physically motivated \textit{training modes}, to analyze how the training set affects the evaluation of the three nuclei \n{2}{H}, \n{3}{H} and \n{4}{He}. Those modifications only take place in the training of our networks, meaning the evaluation step is unaffected by those modifications such that they can be assessed in the same way as our basic training mode. This also means that our extrapolation framework is still free of any sort of preselection of the evaluation sequences to provide a more general extrapolation, which takes every oscillator frequency into account.
-\section{Nmax}
+In this section, we will modify the training data of our extrapolation framework using two different physically motivated training modes in order to to analyze how the training set affects the evaluation of the three nuclei \n{2}{H}, \n{3}{H} and \n{4}{He}. Those modifications only take place in the training process of our networks, meaning the evaluation process is unaffected by those modifications such that they can be assessed in the same way as our basic training mode. This also means that our extrapolation framework is still free of any sort of preselection of the evaluation sequences to provide a more general extrapolation, which takes every oscillator frequency into account.
+\section{Limitation on the model-space dimension}
 \input{chapters/5_extended/nmax.tex}
-\section{srg}
+\section{Restriction to SRG evolved interactions}
 \input{chapters/5_extended/srg.tex}
-\section{results and comparison}
+\section{Results and Comparison}
 \input{chapters/5_extended/results.tex}
-\section{conclusion}
+\section{Conclusion}
 \input{chapters/5_extended/conclusion.tex}

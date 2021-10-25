@@ -5,14 +5,9 @@
 - PDFA in Präambel einschalten (pdfa=false auf pdfa=true setzen), sowie Metadata entkommentieren
 - Quellen für Grundlagen einfügen
 - Gutachter hinzufügen
+-
 
-### Verbesserung Framework
+# Korrektur Bastian
 
-- 3.2.2 (example histogram) legende sortieren
-- WW besser ausformulieren
-- dataflow diagram 3.1.1 verallgemeinern
-
-## TODO bis Dienstag
-
-- outlook fertig schreiben
-- Introduction fertig schreiben
+- color, behavior
+- difference-based, absolute-based, Slater, model-space, ab initio, No-Core, hw in MeV!, N3LO, N2LO nicht kursiv, SMS quelle

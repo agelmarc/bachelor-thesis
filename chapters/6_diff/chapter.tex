@@ -1,9 +1,9 @@
-In our basic extrapolation framework, we trained networks on predicting the exact ground-state energy given a few sequences of absoulte energy values. This method is inherently dependent on the absolute values of the energy, since the networks fundamentally consist of linear maps from one layer to the next. Nuclear ground-state energies have a very broad range, which we already saw in our inspected nuclei. For example, \n{2}{H} has a ground-state energy of approximately \SI{-2.1}{\mega\electronvolt} and \n{4}{He} has a ground-state energy of approximately \SI{-28.4}{\mega\electronvolt}, based off the NCSM calculations shown in \autoref{fig:example_nmax} and \autoref{fig:eval_extended}. As a result, we cannot confidentially exclude the possibility of the absolute ground-state energies influencing the network predictions.
+In our basic extrapolation framework, we trained networks on predicting the exact ground-state energy, given a few sequences of absoulte energy values. This method is inherently dependent on the absolute values of the energy, since the networks fundamentally consist of linear maps from one layer to the next. Nuclear ground-state energies have a very broad range, which we already saw in our inspected nuclei. For example, \n{2}{H} has a ground-state energy of approximately \SI{-2.1}{\mega\electronvolt} and \n{4}{He} has a ground-state energy of approximately \SI{-28.4}{\mega\electronvolt}, based off the NCSM calculations shown in \autoref{fig:example_nmax} and \autoref{fig:eval_extended}. As a result, we cannot confidently exclude the possibility of the absolute ground-state energies influencing the network predictions.
 
-In this chapter, we want to analyze the influence of the absolute energies on the network prediction by implementing a different extrapolation method based on our previous framework, which will work by extrapolating the differences of the energy sequences.
-\section{framework}
+In this chapter, we will analyze the influence of the absolute energies on the network prediction by implementing a different extrapolation method based on our previous framework, which will work by extrapolating the differences of the energy sequences.
+\section{New framework}
 \input{chapters/6_diff/framework.tex}
-\section{results and comparison}
+\section{Results and Comparison}
 \input{chapters/6_diff/results.tex}
-\section{conclusion}
+\section{Conclusion}
 \input{chapters/6_diff/conclusion.tex}

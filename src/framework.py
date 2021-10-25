@@ -14,9 +14,9 @@ plt.rcParams.update({
 N_MAX = [6, 8, 10, 12]
 
 sequences = [
-    [8, 5, 3.75, 3.5],
-    [7.5, 4.75, 3.5, 3.25],
-    [7, 4.5, 3.25, 3]
+    [-2, -5, -6.25, -6.5],
+    [-2.5, -5.25, -6.5, -6.75],
+    [-3, -5.5, -6.75, -7]
 ]
 
 # Figure
@@ -33,8 +33,8 @@ ax.tick_params(axis="both", which="both", direction="in")
 ax.grid(axis="both", color="lightgrey", linestyle=":")
 ax.set_xlabel(r"$N_\mathrm{max}$")
 ax.set_xlim(5, 13)
-ax.set_ylim(2.5, 8.5)
+ax.set_ylim(-7.5, -1.5)
 ax.set_xticks(N_MAX)
 ax.set_ylabel("Energy in MeV")
-fig.savefig("media/dataflow.pdf",
+fig.savefig("src/dataflow.pdf",
             bbox_inches="tight", pad_inches=0)

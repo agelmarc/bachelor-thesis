@@ -1,26 +1,26 @@
 
 Since the results of No-Core Shell Model calculations can show a variety of different convergence behaviors for different observables depending on the nucleus or the chosen models of the nuclear force, it is of large interest to develop extrapolation methods which capture the complexity of the resulting sequences and predict accurate values for various input sequences.
 
-In this section, we provide the theoretical foundation of artificial neural networks, which have already been used in various different physical
+In this section, we provide the theoretical foundation of artificial neural networks, which have already been used in various other physical
 applications, for example in modeling $\beta$-decay half lifes \cite{nnbetadecay} or nuclear charge radii \cite{Akkoyun_2013}.
 
 \subsection{Introduction to Artificial Neural Networks}
 
 An artificial neural network is a pattern recognition algorithm in the field of machine learning. The term \textit{neural network} refers to the original idea to mimic the learning mechanism in biological organisms.
 
-In the human brain, countless cells called neurons are connected to each other in a highly complex system. The strengths of these synaptic connections often change in response to external stimuli. This change is how learning takes place in living organisms \cite{Aggarwal2018}.
+Inside the human brain, countless cells called neurons are connected to each other in a highly complex system. The strengths of these synaptic connections often change in response to external stimuli. This change is how the process of learning takes place in living organisms \cite{Aggarwal2018}.
 
-This learning mechanism is translated to a machine learning algorithm by using basic data processing units that model the behavior of neurons. Because of that, the basic units of an artificial neural network are called neurons as well. These neurons are linked via directed connections. If we wanted to model the structure of the brain more precicely, there would be no restrictions on which neuron could link to which neuron, since this the case in the brain. The machine learning counterpart to this is called a \textit{recurrent network}. The mathematical model of recurrent networks can get arbitrarily complex, such that we only look at neural networks where the neurons are grouped in different layers and only connections from one layer to the next are permitted. This is called a \textit{feedforward network}. Throughout this thesis, we only look at feedforward networks.
+This learning mechanism is translated to a machine learning algorithm by using basic data processing units that model the behavior of neurons. Because of that, the basic units of an artificial neural network are called neurons as well. These neurons are linked via directed connections. If we wanted to model the structure of the brain more precicely, there would be no restrictions on which neuron could link to which, since this is the case in the brain. The machine learning counterpart to this is called a \textit{recurrent network}. The mathematical model of recurrent networks can get arbitrarily complex, such that we only look at neural networks where the neurons are grouped in different layers and only connections from one layer to the next are permitted. This is called a \textit{feedforward network}. Throughout this thesis, we only look at feedforward networks.
 
 In a feedforward network, we hope that the layers correspond to rising levels of abstraction, such that the neurons in earlier layers may capture every detail of the input data and neurons in later layers may capture subpatterns in the input data.
 
 The process of using neural networks to make predictions about data sets consists of multiple phases.
 In general, we want to \textit{train} a neural network by using data sets with known predictions and use them to adjust the model parameters of the network to maximize the precision of the predictions. For that, we need a large data set of NCSM calculations with known predictions. We therefore use sequences that have converged enough so that the limit can be used as a prediction target. This set is called the \textit{training set}.
-After training a network, the nets will be \textit{validated} using samples from a \textit{validation set}, which also has known prediction targets. By comparing the predictions of the network with the targets, we can quantify the quality of the network. In \autoref{fig:fitting}, we can see examples of networks, that \textit{underfit} or \textit{overfit} the training data, as well as a network that fits the training data well.
+After training a network, the nets will be \textit{validated} using samples from a \textit{validation set}, which also has known prediction targets. By comparing the predictions of the network with the targets, we can quantify the quality of the network. In \autoref{fig:fitting}, we can see examples of networks, that underfit or overfit the training data, as well as a network that fits the training data well.
 
 \begin{figure}[H]
   \includegraphics[width=\linewidth]{media/networkquality.png}
-  \caption{Visualization of different qualities of network fits \cite{underfit}. The red line symbols the data fit that was generated during training. The black dots represent the training samples and the red square represents a validation sample. In the first example \textbf{(a)}, the network doesn't fit the training data well, such that the network prediction of the validation sample indicated by the meeting point of the dotted and solid red line is far away from the prediction target. Such a network would not qualify for evaluation. In the second example \textbf{(b)}, the network fits the data well, such that the prediction is close to the target. This network would meet the quality requirement. In the last example \textbf{(c)}, the network fits the training data too well, such that the prediction for the validation target is too unrealistic. This network would not meet the quality requirements.}
+  \caption{Visualization of different qualities of network fits \cite{underfit}. The red line represents the data fit that was generated during training. The black dots symbolize the training samples and the red square denotes a validation sample. In the first example \textbf{(a)}, the network doesn't fit the training data well, such that the network prediction of the validation sample indicated by the meeting point of the dashed and solid red line is far away from the prediction target. Such a network would not qualify for evaluation. In the second example \textbf{(b)}, the network fits the data well, such that the prediction is close to the target. This network would meet the quality requirement. In the last example \textbf{(c)}, the network fits the training data too well, such that the prediction for the validation target is too unrealistic. This network would not meet the quality requirements.}
   \label{fig:fitting}
 \end{figure}
 
@@ -37,7 +37,7 @@ After checking the quality of a network, we can then feed \textit{evaluation dat
   \label{fig:neuron}
 \end{wrapfigure}
 To understand how an artificial neural network processes large amounts of data,
-we must first discuss the structure, or the \textit{topology} of such networks.
+we must first discuss the structure of such networks.
 
 In an ANN, the basic data processing unit is a neuron. Its only job is to take
 input signals from directed connections to other neurons and process these inputs to generate an output signal, which can itself be connected to the input of other neurons. In \autoref{fig:neuron}, a sample neuron is depicted.
@@ -82,7 +82,7 @@ Before one constructs a feedforward artificial neural network, one has to think 
 For example, if one uses an ANN to classify greyscale images of pixel-size $24\times 24$ into two classes $A$ and $B$ (this is called a \textit{binary classification problem}), one could choose $L^{(1)} = 24 \cdot 24 = 576$ and $L^{(N)} = 2$, such that each greyscale value can be fed into one input neuron and each output neuron corresponds to one of the two classes $A$ and $B$. If one restricts the output neurons to the range $(0, 1)$, one could extract the prediction of the network by choosing the neuron with the highest activation.
 % Absatz über underfitting / overfitting
 
-The function \eqref{eqn:ann_function} is dependent on the weights and biases of the connections and neurons. They can be viewed as internal parameters of $f$. When the network is initialized, they are often set to random values and the network will output random data. The challenge of machine learning is to apply algorithms on the outputs of the network to carefully adjust the weights and biases which results in the optimization of the network model.
+The function \eqref{eqn:ann_function} is dependent on the weights and biases of the connections and neurons. They can be viewed as internal parameters of $f$. When the network is initialized, they are often set to random values and the network will output random data. The challenge of machine learning is to apply algorithms on the outputs of the network to carefully adjust the weights and biases which results in the optimization of the network model \cite{nielsen}.
 
 \subsection{Learning Process of a network}
 \label{sec:sgd}
@@ -130,7 +130,7 @@ Analogously, the derivative of $C_x$ with respect to the bias $b_i^{(N)}$ is giv
 \begin{equation}
   \frac{\partial C_x}{\partial b_i^{(N)}} = 2(a_i^{(N)}-o_i^{(N)}) \cdot \sigma'(z_i^{(N)}).
 \end{equation}
-These equations can be used to adjust the weights of the second last layer, as well as the biases of the last layer. Since we also need the derivative with respect to weights and biases in the earlier layers, we can use the clever trick of applying this step iteratively to one layer backwards at a time. This is why this algorithm is called backpropagation. To compute those derivatives, we need to know how the loss function changes if activations in the second last layer change. This is given by
+These equations can be used to adjust the weights of the second last layer, as well as the biases of the last. Since we also need the derivative with respect to weights and biases in the earlier layers, we can use the clever trick of applying this step iteratively to one layer backwards at a time. This is why this algorithm is called backpropagation. To compute those derivatives, we need to know how the loss function changes if activations in the second last layer change. This is given by
 \begin{equation}
   \frac{\partial C_x}{\partial a_j^{(N-1)}} =\sum_{i=1}^{L^{N}} 2(a_i^{(N)}-o_i^{(N)}) \cdot \sigma'(z_i^{(N)}) \cdot w_{ij}^{(N-1)}.
 \end{equation}
@@ -138,4 +138,4 @@ We can use this derivative to calculate derivatives of the loss function with re
 \begin{equation}
   \nabla C = \sum_{x} \nabla C_x
 \end{equation}
-over all training samples in the batch.
+over all training samples in the batch \cite{nielsen}.
